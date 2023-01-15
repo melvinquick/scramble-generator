@@ -1,4 +1,4 @@
-<p align="center"> <img src="/images/logo.ico" /> </p>
+<p align="center"> <img src="/images/logo-512x512.ico" /> </p>
 
 # Scramble Generator
 
