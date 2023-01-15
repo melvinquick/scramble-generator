@@ -1,5 +1,9 @@
 # Scramble Generator
 
+### Attributions
+
+- Logo: <a href="https://www.flaticon.com/free-icons/rubik" title="Rubik icons">Rubik icons created by DinosoftLabs - Flaticon</a>
+
 ## Purpose
 
 The general purpose of this app is to give people an easy way to generate scrambles for all of their favorite twisty puzzles (e.g. Rubik's Cubes (2x2, 3x3, 4x4, etc.)).
