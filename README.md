@@ -1,3 +1,5 @@
+<p align="center"> <img src="/images/logo.ico" /> </p>
+
 # Scramble Generator
 
 ### Attributions
