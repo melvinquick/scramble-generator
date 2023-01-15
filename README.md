@@ -2,6 +2,11 @@
 
 # Scramble Generator
 
+### Contributors
+
+- Charlie Quick
+- Sean Ingimarson
+
 ### Attributions
 
 - Logo: <a href="https://www.flaticon.com/free-icons/rubik" title="Rubik icons">Rubik icons created by DinosoftLabs - Flaticon</a>
