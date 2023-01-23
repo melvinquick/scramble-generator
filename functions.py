@@ -5,7 +5,7 @@ import random
 
 # --- Functions --- #
 
-def cube_rand_moves(num_moves=20):
+def three_by_three(num_moves=20):
     # Function for generating random moves for standard cube puzzles (e.g. 2x2, 3x3, 4x4, etc.)
     # Possible moves are: Right (R), Right Inverted (R'), Left (L), Left Inverted (L'), Up (U),
     # Up Inverted (U'), Down (D), Down Inverted (D'), Front (F), Front Inverted (F'), Back (B), Back Inverted (B')
@@ -35,7 +35,7 @@ def main():
     if num_moves == "":
         num_moves = 20
 
-    print(cube_rand_moves(num_moves))
+    print(three_by_three(num_moves))
 
 
 if __name__ == "__main__":

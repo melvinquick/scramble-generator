@@ -22,7 +22,7 @@ window = sg.Window("Scramble Generator", layout, icon="G:/My Drive/Workspaces/Gi
 while True:
     event, values = window.read()
     if event == "Generate Scramble!" and values[0] != "":
-        window["-SCRAMBLE-"].update(functions.cube_rand_moves(int(values[0])))
+        window["-SCRAMBLE-"].update(functions.three_by_three(int(values[0])))
     if event == "Generate Scramble!" and values[0] == "":
         window["-SCRAMBLE-"].update("The number of moves cannot be empty!")
     if event == sg.WIN_CLOSED or event == "Exit":
