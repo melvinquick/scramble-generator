@@ -22,6 +22,8 @@ The general purpose of this app is to give people an easy way to generate scramb
 - Package and make available on other platforms (e.g. Android, iOS, Linux)
   - Currently only usable on Windows
 - Fix typing issues that don't currently break the app but do cause errors to show up in source code
+- Add installer to the release so that it's easier for people to make use of like a normal application
+  - I basically just want to move it to the C:\Program Files folder and add a shortcut to the app to the Start Menu folder
 
 
 ## Completed :white_check_mark:
