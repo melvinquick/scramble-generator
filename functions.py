@@ -5,8 +5,48 @@ import random
 
 # --- Functions --- #
 
+def two_by_two(num_moves=9):
+    # Function for generating random moves for standard 2x2 cube puzzles
+    # Possible moves are: Right (R), Right Inverted (R'), Left (L), Left Inverted (L'), Up (U),
+    # Up Inverted (U'), Down (D), Down Inverted (D'), Front (F), Front Inverted (F'), Back (B), Back Inverted (B')
+
+    top_moves = ["U ", "U' "]
+    right_moves = ["R ", "R' "]
+    front_moves = ["F ", "F' "]
+    scramble_order = []
+    counter = 0
+
+    while counter < num_moves:
+        if counter == 0:
+            scramble_order.append(random.choice(
+                top_moves+right_moves+front_moves))
+        else:
+            match scramble_order[-1]:
+                case "U ":
+                    scramble_order.append(random.choice(
+                        ["U "]+right_moves+front_moves))
+                case "U' ":
+                    scramble_order.append(random.choice(
+                        ["U' "]+right_moves+front_moves))
+                case "R ":
+                    scramble_order.append(random.choice(
+                        top_moves+["R "]+front_moves))
+                case "R' ":
+                    scramble_order.append(random.choice(
+                        top_moves+["R' "]+front_moves))
+                case "F ":
+                    scramble_order.append(random.choice(
+                        top_moves+right_moves+["F "]))
+                case "F' ":
+                    scramble_order.append(random.choice(
+                        top_moves+right_moves+["F' "]))
+        counter += 1
+    scramble_order = "".join(scramble_order)
+    return scramble_order
+
+
 def three_by_three(num_moves=20):
-    # Function for generating random moves for standard cube puzzles (e.g. 2x2, 3x3, 4x4, etc.)
+    # Function for generating random moves for standard 3x3 cube puzzles
     # Possible moves are: Right (R), Right Inverted (R'), Left (L), Left Inverted (L'), Up (U),
     # Up Inverted (U'), Down (D), Down Inverted (D'), Front (F), Front Inverted (F'), Back (B), Back Inverted (B')
 
@@ -69,18 +109,21 @@ def three_by_three(num_moves=20):
 # --- Main --- #
 
 def main():
+    # Main block used for testing and running directly (not as imported lirbary)
 
-    # Variables
+    counter = 0
     try:
         num_moves = int(input(
-            "Enter the number of moves you'd like the scrambler to generate (default is 20): "))
+            "Enter the number of moves you'd like the scrambler to generate (leave blank for defaults): "))
     except ValueError:
-        num_moves = 20
+        num_moves = 9
 
     if num_moves == "":
-        num_moves = 20
+        num_moves = 9
 
-    print(three_by_three(num_moves))
+    while counter < 10:
+        print(two_by_two(num_moves))
+        counter += 1
 
 
 if __name__ == "__main__":
