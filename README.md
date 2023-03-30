@@ -17,14 +17,13 @@ The general purpose of this app is to give people an easy way to generate scramb
 
 ## Coming Soon :construction:
 
-- Add the ability to get more scramble instructions for non-3x3 puzzles (e.g. 2x2, ..., 11x11, Pyraminx, Megaminx, etc.)
+- Add the ability to get more scramble instructions for non-3x3 puzzles (e.g. 4x4, ..., 11x11, Pyraminx, Megaminx, etc.)
 - Fix typing issues that don't currently break the app but do cause errors to show up in source code
-- Create an AppImage package for Linux use
 
 ## Completed :white_check_mark:
 
 - Base GUI made with PySimpleGUI
-- Scrambles for 3x3 cubes are able to be made for a dynamic number of moves
+- Scrambles for 3x3 and 2x2 cubes are able to be made for a dynamic number of moves
 - Logo created
 - Package created using Auto Py To Exe
 - Dropdown to select puzzle
