@@ -2,6 +2,12 @@
 
 import PySimpleGUI as sg
 import functions
+import os
+
+# --- Location --- #
+here = os.path.dirname(os.path.abspath(__file__))
+icon = 'images/logo-512x512.ico'
+icon_fullpath = os.path.join(here, icon)
 
 # --- Window Settings --- #
 
@@ -15,7 +21,7 @@ layout = [[sg.Text('Enter number of desired moves, select your puzzle from the d
           [sg.Text(key='-SCRAMBLE-', pad=6)]]
 
 # Create the window
-window = sg.Window('Scramble Generator', layout, icon='G:/My Drive/Workspaces/GitHub/scramble-generator/images/logo-512x512.ico',
+window = sg.Window('Scramble Generator', layout, icon=icon_fullpath,
                    element_justification='center')
 
 # Event loop to process "events" and get the "values" of the inputs
@@ -25,7 +31,8 @@ while True:
         if values[1] == '2x2':
             window['-SCRAMBLE-'].update(functions.two_by_two(int(values[0])))
         if values[1] == '3x3':
-            window['-SCRAMBLE-'].update(functions.three_by_three(int(values[0])))
+            window['-SCRAMBLE-'].update(
+                functions.three_by_three(int(values[0])))
     if event == 'Generate Scramble!' and values[0] == '':
         if values[1] == '2x2':
             window['-SCRAMBLE-'].update(functions.two_by_two())
