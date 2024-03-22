@@ -5,12 +5,11 @@ import random
 
 # --- Functions --- #
 
+# Function for generating random moves for standard 3x3 cube puzzles
+# Possible moves are: Right and Right Inverted (R and R'), Left and Left Inverted (L and L'), Up and Up Inverted (U and U'), Down and Down Inverted (D and D'), Front and Front Inverted (F and F'), Back and Back Inverted (B and B')
+
 
 def two_by_two(num_moves=9):
-    # Function for generating random moves for standard 2x2 cube puzzles
-    # Possible moves are: Right (R), Right Inverted (R'), Left (L), Left Inverted (L'), Up (U),
-    # Up Inverted (U'), Down (D), Down Inverted (D'), Front (F), Front Inverted (F'), Back (B), Back Inverted (B')
-
     top_moves = ["U ", "U' "]
     right_moves = ["R ", "R' "]
     front_moves = ["F ", "F' "]
@@ -52,10 +51,6 @@ def two_by_two(num_moves=9):
 
 
 def three_by_three(num_moves=20):
-    # Function for generating random moves for standard 3x3 cube puzzles
-    # Possible moves are: Right (R), Right Inverted (R'), Left (L), Left Inverted (L'), Up (U),
-    # Up Inverted (U'), Down (D), Down Inverted (D'), Front (F), Front Inverted (F'), Back (B), Back Inverted (B')
-
     top_moves = ["U ", "U' "]
     bottom_moves = ["D ", "D' "]
     left_moves = ["L ", "L' "]
