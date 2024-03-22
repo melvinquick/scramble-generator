@@ -8,7 +8,7 @@
 
 ## Purpose
 
-The general purpose of this app is to give people an easy way to generate scrambles for all of their favorite twisty puzzles.
+The general purpose of this app is to give people an easy way to generate scrambles for 2x2 and 3x3 Rubik's Puzzles.
 
 ## Project Goals
 
