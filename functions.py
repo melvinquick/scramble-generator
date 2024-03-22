@@ -9,169 +9,38 @@ import random
 # Possible moves are: Right and Right Inverted (R and R'), Left and Left Inverted (L and L'), Up and Up Inverted (U and U'), Down and Down Inverted (D and D'), Front and Front Inverted (F and F'), Back and Back Inverted (B and B')
 
 
-def two_by_two(num_moves=9):
-    top_moves = ["U ", "U' "]
-    right_moves = ["R ", "R' "]
-    front_moves = ["F ", "F' "]
+def moves(num_moves=20):
+    moves = [
+        "U ",
+        "U' ",
+        "D ",
+        "D' ",
+        "L ",
+        "L' ",
+        "R ",
+        "R' ",
+        "F ",
+        "F' ",
+        "B ",
+        "B' ",
+    ]
+    filtered_moves = []
     scramble_order = []
     counter = 0
 
     while counter < num_moves:
         if counter == 0:
-            scramble_order.append(random.choice(top_moves + right_moves + front_moves))
+            scramble_order.append(random.choice(moves))
         else:
-            match scramble_order[-1]:
-                case "U ":
-                    scramble_order.append(
-                        random.choice(["U "] + right_moves + front_moves)
-                    )
-                case "U' ":
-                    scramble_order.append(
-                        random.choice(["U' "] + right_moves + front_moves)
-                    )
-                case "R ":
-                    scramble_order.append(
-                        random.choice(top_moves + ["R "] + front_moves)
-                    )
-                case "R' ":
-                    scramble_order.append(
-                        random.choice(top_moves + ["R' "] + front_moves)
-                    )
-                case "F ":
-                    scramble_order.append(
-                        random.choice(top_moves + right_moves + ["F "])
-                    )
-                case "F' ":
-                    scramble_order.append(
-                        random.choice(top_moves + right_moves + ["F' "])
-                    )
+            filtered_moves = [
+                element for element in moves if element != scramble_order[-1]
+            ]
+            scramble_order.append(random.choice(filtered_moves))
+
         counter += 1
-    scramble_order = "".join(scramble_order)
-    return scramble_order
 
+    scramble_order = "".join(map(str, scramble_order))
 
-def three_by_three(num_moves=20):
-    top_moves = ["U ", "U' "]
-    bottom_moves = ["D ", "D' "]
-    left_moves = ["L ", "L' "]
-    right_moves = ["R ", "R' "]
-    front_moves = ["F ", "F' "]
-    back_moves = ["B ", "B' "]
-    scramble_order = []
-    counter = 0
-
-    while counter < num_moves:
-        if counter == 0:
-            scramble_order.append(
-                random.choice(
-                    top_moves
-                    + bottom_moves
-                    + left_moves
-                    + right_moves
-                    + front_moves
-                    + back_moves
-                )
-            )
-        else:
-            match scramble_order[-1]:
-                case "U ":
-                    scramble_order.append(
-                        random.choice(
-                            ["U "] + left_moves + right_moves + front_moves + back_moves
-                        )
-                    )
-                case "U' ":
-                    scramble_order.append(
-                        random.choice(
-                            ["U' "]
-                            + left_moves
-                            + right_moves
-                            + front_moves
-                            + back_moves
-                        )
-                    )
-                case "D ":
-                    scramble_order.append(
-                        random.choice(
-                            ["D "] + left_moves + right_moves + front_moves + back_moves
-                        )
-                    )
-                case "D' ":
-                    scramble_order.append(
-                        random.choice(
-                            ["D' "]
-                            + left_moves
-                            + right_moves
-                            + front_moves
-                            + back_moves
-                        )
-                    )
-                case "L ":
-                    scramble_order.append(
-                        random.choice(
-                            top_moves + bottom_moves + ["L "] + front_moves + back_moves
-                        )
-                    )
-                case "L' ":
-                    scramble_order.append(
-                        random.choice(
-                            top_moves
-                            + bottom_moves
-                            + ["L' "]
-                            + front_moves
-                            + back_moves
-                        )
-                    )
-                case "R ":
-                    scramble_order.append(
-                        random.choice(
-                            top_moves + bottom_moves + ["R "] + front_moves + back_moves
-                        )
-                    )
-                case "R' ":
-                    scramble_order.append(
-                        random.choice(
-                            top_moves
-                            + bottom_moves
-                            + ["R' "]
-                            + front_moves
-                            + back_moves
-                        )
-                    )
-                case "F ":
-                    scramble_order.append(
-                        random.choice(
-                            top_moves + bottom_moves + left_moves + right_moves + ["F "]
-                        )
-                    )
-                case "F' ":
-                    scramble_order.append(
-                        random.choice(
-                            top_moves
-                            + bottom_moves
-                            + left_moves
-                            + right_moves
-                            + ["F' "]
-                        )
-                    )
-                case "B ":
-                    scramble_order.append(
-                        random.choice(
-                            top_moves + bottom_moves + left_moves + right_moves + ["B "]
-                        )
-                    )
-                case "B' ":
-                    scramble_order.append(
-                        random.choice(
-                            top_moves
-                            + bottom_moves
-                            + left_moves
-                            + right_moves
-                            + ["B' "]
-                        )
-                    )
-        counter += 1
-    scramble_order = "".join(scramble_order)
     return scramble_order
 
 
@@ -179,9 +48,6 @@ def three_by_three(num_moves=20):
 
 
 def main():
-    # Main block used for testing and running directly (not as imported lirbary)
-
-    counter = 0
     try:
         num_moves = int(
             input(
@@ -189,14 +55,12 @@ def main():
             )
         )
     except ValueError:
-        num_moves = 9
+        num_moves = 20
 
     if num_moves == "":
-        num_moves = 9
+        num_moves = 20
 
-    while counter < 10:
-        print(two_by_two(num_moves))
-        counter += 1
+    print(moves(num_moves))
 
 
 if __name__ == "__main__":
