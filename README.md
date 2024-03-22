@@ -1,6 +1,16 @@
+<html>
+<head>
+<style>
+h1 {
+  text-align: center;
+}
+</style>
+</head>
+</html>
+
 <p align="center"> <img src="/images/logo-512x512.ico" /> </p>
 
-<p align="center"> <h1> Scramble Generator </h1> </p>
+<h1>Scramble Generator</h1>
 
 ### Contributors
 
