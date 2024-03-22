@@ -1,6 +1,6 @@
 <p align="center"> <img src="/images/logo-512x512.ico" /> </p>
 
-<center> <h1> Scramble Generator </h1> </center>
+<p align="center"> <h1> Scramble Generator </h1> </p>
 
 ### Contributors
 
