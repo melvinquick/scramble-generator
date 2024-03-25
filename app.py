@@ -20,7 +20,12 @@ from PyQt6.QtWidgets import (
 )
 
 # dir = os.path.realpath(__file__)
-os.chdir(os.path.realpath(os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))))
+os.chdir(
+    os.path.realpath(
+        os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+    )
+)
+
 
 class MainWindow(QMainWindow):
     def __init__(self):
