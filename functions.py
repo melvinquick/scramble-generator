@@ -9,7 +9,7 @@ import random
 # Possible moves are: Right and Right Inverted (R and R'), Left and Left Inverted (L and L'), Up and Up Inverted (U and U'), Down and Down Inverted (D and D'), Front and Front Inverted (F and F'), Back and Back Inverted (B and B')
 
 
-def moves(num_moves=20, puzzle="3x3"):
+def moves(num_moves=25, puzzle="3x3"):
     opposite_moves = {
         "U ": "U' ",
         "U' ": "U ",
@@ -95,7 +95,7 @@ def main():
             )
         )
     except ValueError:
-        num_moves = 20
+        num_moves = 25
 
     try:
         puzzle = str(input("Select one of the following list [2x2,3x3]: "))
@@ -103,7 +103,7 @@ def main():
         puzzle = "3x3"
 
     if num_moves == "":
-        num_moves = 20
+        num_moves = 25
 
     print(moves(num_moves))
 
