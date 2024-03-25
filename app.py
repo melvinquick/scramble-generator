@@ -40,9 +40,8 @@ class MainWindow(QMainWindow):
         # Set window icon to logo
         self.setWindowIcon(QIcon("images/logo-512x512.ico"))
 
-        # Setup page layout
+        # Setup page layout and create widgets
         page = QVBoxLayout()
-
         inputs = QHBoxLayout()
 
         button = QPushButton("Generate Scramble")
@@ -76,6 +75,7 @@ class MainWindow(QMainWindow):
 
         self.setCentralWidget(gui)
 
+    # Function for getting the moves for the output by making use of moves() in functions.py
     def get_moves(self):
         self.scramble.setText(
             functions.moves(self.num_moves.value(), self.puzzle_type.currentText())
