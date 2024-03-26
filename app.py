@@ -1,7 +1,7 @@
 import sys, os
 import functions
 
-from PyQt6.QtCore import Qt, QFile, QTextStream
+from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import (
     QApplication,
@@ -37,19 +37,30 @@ class MainWindow(QMainWindow):
         inputs = QHBoxLayout()
 
         button = QPushButton("Generate Scramble")
+        button.setStyleSheet("background-color: #44475a; color: #bd93f9;"
+                             "border: 1px solid #6272a4; border-radius: 4px;"
+                             "padding: 8px 16px; cursor: pointer;")
+        button.hoverEnterEvent = self.button_hover  # Connect hover effect function
 
         self.puzzle_type = QComboBox()
         self.puzzle_type.addItems(["2x2", "3x3"])
         self.puzzle_type.setCurrentIndex(1)
+        self.puzzle_type.setStyleSheet("background-color: #383c44; color: #f8f8f2;"
+                                       "border: 1px solid #6272a4; border-radius: 4px;"
+                                       "padding: 4px 8px;")
 
         self.num_moves = QSpinBox()
         self.num_moves.setRange(9, 130)
         self.num_moves.lineEdit().setReadOnly(True)
+        self.num_moves.setStyleSheet("background-color: #383c44; color: #f8f8f2;"
+                                      "border: 1px solid #6272a4; border-radius: 4px;"
+                                      "padding: 4px 8px;")
 
         self.scramble = QLabel()
         self.scramble.setAlignment(
             Qt.AlignmentFlag.AlignVCenter | Qt.AlignmentFlag.AlignHCenter
         )
+        self.scramble.setStyleSheet("color: #f8f8f2;")
 
         inputs.addWidget(button)
         inputs.addWidget(self.puzzle_type)
@@ -58,14 +69,18 @@ class MainWindow(QMainWindow):
         page.addLayout(inputs)
         page.addWidget(self.scramble)
 
-        # Connect button to function to get scramble moves
-        button.pressed.connect(self.get_moves)
+        button.pressed.connect(self.get_moves) # Connect function to get the moves
 
-        # Create dummy widget to hold layout and then set the central widget to the dummy widget
-        gui = QWidget()
+        gui = QWidget() # Create dummy widget to hold the layout
         gui.setLayout(page)
 
-        self.setCentralWidget(gui)
+        self.setCentralWidget(gui) # Set the central widget to the dummy widget
+        self.setStyleSheet("background-color: #282a3c;") # Set background color for the entire window
+
+    def button_hover(self, event):
+        # Add hover effect for button (optional)
+        self.sender().setStyleSheet("background-color: #565b66;")  # Change background on hover
+        event.accept()  # Accept the hover event
 
     # Function for getting the moves for the output by making use of moves() in functions.py
     def get_moves(self):
