@@ -23,39 +23,39 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        # Setup window title
-        self.setWindowTitle("Scramble Generator")
-
-        # Set minimum window size
-        self.setMinimumSize(360, 100)
-
-        # Set window icon to logo
-        self.setWindowIcon(QIcon(icon))
+        self.setWindowTitle("Scramble Generator")  # Setup window title
+        self.setMinimumSize(360, 100)  # Set minimum window size
+        self.setWindowIcon(QIcon(icon))  # Set window icon to logo
 
         # Setup page layout and create widgets
         page = QVBoxLayout()
         inputs = QHBoxLayout()
 
         button = QPushButton("Generate Scramble")
-        button.setStyleSheet("background-color: #44475a; color: #bd93f9;"
-                             "border: 1px solid #6272a4; border-radius: 4px;"
-                             "padding: 8px 16px; cursor: pointer;")
-        button.hoverEnterEvent = self.button_hover  # Connect hover effect function
+        button.setStyleSheet(
+            "background-color: #44475a; color: #bd93f9;"
+            "border: 1px solid #6272a4; border-radius: 4px;"
+            "padding: 8px 16px; cursor: pointer;"
+        )
 
         self.puzzle_type = QComboBox()
         self.puzzle_type.addItems(["2x2", "3x3"])
         self.puzzle_type.setCurrentIndex(1)
-        self.puzzle_type.setStyleSheet("background-color: #383c44; color: #f8f8f2;"
-                                       "border: 1px solid #6272a4; border-radius: 4px;"
-                                       "padding: 4px 8px;")
+        self.puzzle_type.setStyleSheet(
+            "background-color: #383c44; color: #f8f8f2;"
+            "border: 1px solid #6272a4; border-radius: 4px;"
+            "padding: 4px 8px;"
+        )
 
         self.num_moves = QSpinBox()
         self.num_moves.setRange(9, 130)
         self.num_moves.setValue(25)
         self.num_moves.lineEdit().setReadOnly(True)
-        self.num_moves.setStyleSheet("background-color: #383c44; color: #f8f8f2;"
-                                      "border: 1px solid #6272a4; border-radius: 4px;"
-                                      "padding: 4px 8px;")
+        self.num_moves.setStyleSheet(
+            "background-color: #383c44; color: #f8f8f2;"
+            "border: 1px solid #6272a4; border-radius: 4px;"
+            "padding: 4px 8px;"
+        )
 
         self.scramble = QLabel()
         self.scramble.setAlignment(
@@ -70,18 +70,15 @@ class MainWindow(QMainWindow):
         page.addLayout(inputs)
         page.addWidget(self.scramble)
 
-        button.pressed.connect(self.get_moves) # Connect function to get the moves
+        button.pressed.connect(self.get_moves)  # Connect function to get the moves
 
-        gui = QWidget() # Create dummy widget to hold the layout
+        gui = QWidget()  # Create dummy widget to hold the layout
         gui.setLayout(page)
 
-        self.setCentralWidget(gui) # Set the central widget to the dummy widget
-        self.setStyleSheet("background-color: #282a3c;") # Set background color for the entire window
-
-    def button_hover(self, event):
-        # Add hover effect for button (optional)
-        self.sender().setStyleSheet("background-color: #565b66;")  # Change background on hover
-        event.accept()  # Accept the hover event
+        self.setCentralWidget(gui)  # Set the central widget to the dummy widget
+        self.setStyleSheet(
+            "background-color: #282a3c;"
+        )  # Set background color for the entire window
 
     # Function for getting the moves for the output by making use of moves() in functions.py
     def get_moves(self):
