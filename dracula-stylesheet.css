@@ -1,0 +1,45 @@
+/* Dracula Theme colors */
+body {
+  background-color: #282a3c;
+  color: #f8f8f2;
+}
+
+/* Widgets */
+QWidget {
+  border: none;
+}
+
+QPushButton {
+  background-color: #44475a;
+  color: #bd93f9;
+  border: 1px solid #6272a4;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+QPushButton:hover {
+  background-color: #565b66;
+}
+
+QPushButton:pressed {
+  background-color: #383c44;
+}
+
+QComboBox,
+QSpinBox {
+  background-color: #383c44;
+  color: #f8f8f2;
+  border: 1px solid #6272a4;
+  border-radius: 4px;
+  padding: 4px 8px;
+}
+
+QComboBox:hover,
+QSpinBox:hover {
+  border-color: #bd93f9;
+}
+
+QLabel {
+  color: #f8f8f2;
+}
