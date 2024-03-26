@@ -51,6 +51,7 @@ class MainWindow(QMainWindow):
 
         self.num_moves = QSpinBox()
         self.num_moves.setRange(9, 130)
+        self.num_moves.setValue(25)
         self.num_moves.lineEdit().setReadOnly(True)
         self.num_moves.setStyleSheet("background-color: #383c44; color: #f8f8f2;"
                                       "border: 1px solid #6272a4; border-radius: 4px;"
