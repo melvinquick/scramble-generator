@@ -1,5 +1,3 @@
-# --- Libraries --- #
-
 import sys, os
 import functions
 
