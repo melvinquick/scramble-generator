@@ -23,11 +23,10 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("Scramble Generator")  # Setup window title
-        self.setMinimumSize(360, 100)  # Set minimum window size
-        self.setWindowIcon(QIcon(icon))  # Set window icon to logo
+        self.setWindowTitle("Scramble Generator")
+        self.setMinimumSize(360, 100)
+        self.setWindowIcon(QIcon(icon))
 
-        # Setup page layout and create widgets
         page = QVBoxLayout()
         inputs = QHBoxLayout()
 
@@ -70,17 +69,16 @@ class MainWindow(QMainWindow):
         page.addLayout(inputs)
         page.addWidget(self.scramble)
 
-        button.pressed.connect(self.get_moves)  # Connect function to get the moves
+        button.pressed.connect(self.get_moves)
 
-        gui = QWidget()  # Create dummy widget to hold the layout
+        gui = QWidget()
         gui.setLayout(page)
 
-        self.setCentralWidget(gui)  # Set the central widget to the dummy widget
+        self.setCentralWidget(gui)
         self.setStyleSheet(
             "background-color: #282a3c;"
-        )  # Set background color for the entire window
+        )
 
-    # Function for getting the moves for the output by making use of moves() in functions.py
     def get_moves(self):
         self.scramble.setText(
             functions.moves(self.num_moves.value(), self.puzzle_type.currentText())
