@@ -27,49 +27,45 @@ class MainWindow(QMainWindow):
         self.setMinimumSize(360, 100)
         self.setWindowIcon(QIcon(icon))
 
+        self.theme = "light"
+        self.set_theme()
+
         page = QVBoxLayout()
         inputs = QHBoxLayout()
 
         button = QPushButton("Generate Scramble")
-        button.setStyleSheet(
-            "background-color: #44475a; color: #bd93f9;"
-            "border: 1px solid #6272a4; border-radius: 4px;"
-            "padding: 8px 16px; cursor: pointer;"
-        )
+        self.apply_theme(button)
 
         self.puzzle_type = QComboBox()
         self.puzzle_type.addItems(["2x2", "3x3"])
         self.puzzle_type.setCurrentIndex(1)
-        self.puzzle_type.setStyleSheet(
-            "background-color: #383c44; color: #f8f8f2;"
-            "border: 1px solid #6272a4; border-radius: 4px;"
-            "padding: 4px 8px;"
-        )
+        self.apply_theme(self.puzzle_type)
 
         self.num_moves = QSpinBox()
         self.num_moves.setRange(9, 130)
         self.num_moves.setValue(25)
         self.num_moves.lineEdit().setReadOnly(True)
-        self.num_moves.setStyleSheet(
-            "background-color: #383c44; color: #f8f8f2;"
-            "border: 1px solid #6272a4; border-radius: 4px;"
-            "padding: 4px 8px;"
-        )
+        self.apply_theme(self.num_moves)
+
+        self.theme_toggle = QPushButton("Dark Mode")
+        self.apply_theme(self.theme_toggle)
 
         self.scramble = QLabel()
         self.scramble.setAlignment(
             Qt.AlignmentFlag.AlignVCenter | Qt.AlignmentFlag.AlignHCenter
         )
-        self.scramble.setStyleSheet("color: #f8f8f2;")
+        self.apply_theme(self.scramble)
 
         inputs.addWidget(button)
         inputs.addWidget(self.puzzle_type)
         inputs.addWidget(self.num_moves)
+        inputs.addWidget(self.theme_toggle)
 
         page.addLayout(inputs)
         page.addWidget(self.scramble)
 
         button.pressed.connect(self.get_moves)
+        self.theme_toggle.pressed.connect(self.toggle_theme)
 
         gui = QWidget()
         gui.setLayout(page)
@@ -78,6 +74,41 @@ class MainWindow(QMainWindow):
         self.setStyleSheet(
             "background-color: #282a3c;"
         )
+
+        self.toggle_theme() # This is done to make issue of text shifting in num_moves after first theme_toggle not noticeable
+
+    def set_theme(self):
+        if self.theme == "dark":
+            self.theme_stylesheet = """
+                background-color: #1C1E26;
+                color: #ABB2BF;
+                border: 1px solid #4B5363;
+                border-radius: 4px;
+                padding: 2px 4px; /* Adjust padding */
+            """
+        elif self.theme == "light":
+            self.theme_stylesheet = """
+                background-color: #F4F4F4;
+                color: #2C323C;
+                border: 1px solid #D3D7CF;
+                border-radius: 4px;
+                padding: 2px 4px; /* Adjust padding */
+            """
+
+    def apply_theme(self, widget):
+        widget.setStyleSheet(self.theme_stylesheet)
+
+    def toggle_theme(self):
+        self.theme = "light" if self.theme == "dark" else "dark"
+        self.set_theme()
+        self.apply_theme(self)
+        # Apply theme to all child widgets
+        for widget in self.findChildren(QWidget):
+            self.apply_theme(widget)
+        if self.theme == "dark":
+            self.theme_toggle.setText("Dark Mode")
+        else:
+            self.theme_toggle.setText("Light Mode")
 
     def get_moves(self):
         self.scramble.setText(
