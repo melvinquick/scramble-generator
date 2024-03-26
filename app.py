@@ -1,8 +1,6 @@
 # --- Libraries --- #
 
-import sys
-import os
-import inspect
+import sys, os
 import functions
 
 from PyQt6.QtCore import Qt
@@ -19,12 +17,8 @@ from PyQt6.QtWidgets import (
     QSpinBox,
 )
 
-# dir = os.path.realpath(__file__)
-os.chdir(
-    os.path.realpath(
-        os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-    )
-)
+basedir = os.path.dirname(__file__)
+icon = os.path.join(basedir, "images/logo-512x512.ico")
 
 
 class MainWindow(QMainWindow):
@@ -38,7 +32,7 @@ class MainWindow(QMainWindow):
         self.setMinimumSize(360, 100)
 
         # Set window icon to logo
-        self.setWindowIcon(QIcon("images/logo-512x512.ico"))
+        self.setWindowIcon(QIcon(icon))
 
         # Setup page layout and create widgets
         page = QVBoxLayout()
