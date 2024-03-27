@@ -72,7 +72,7 @@ class MainWindow(QMainWindow):
 
         self.setCentralWidget(gui)
 
-        self.toggle_theme() # This is done to make issue of text shifting in num_moves after first theme_toggle not noticeable
+        self.toggle_theme()  # This is done to make issue of text shifting in num_moves after first theme_toggle not noticeable
 
     def set_theme(self):
         if self.theme == "dark":
