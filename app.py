@@ -66,6 +66,7 @@ class MainWindow(QMainWindow):
 
         button.pressed.connect(self.get_moves)
         self.theme_toggle.pressed.connect(self.toggle_theme)
+        self.puzzle_type.currentTextChanged.connect(self.set_default_num_moves)
 
         gui = QWidget()
         gui.setLayout(page)
@@ -111,6 +112,13 @@ class MainWindow(QMainWindow):
         self.scramble.setText(
             functions.moves(self.num_moves.value(), self.puzzle_type.currentText())
         )
+
+    def set_default_num_moves(self):
+        match self.puzzle_type.currentText():
+            case "2x2":
+                self.num_moves.setValue(9)
+            case "3x3":
+                self.num_moves.setValue(25)
 
 
 def main():
