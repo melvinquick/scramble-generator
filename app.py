@@ -77,17 +77,17 @@ class MainWindow(QMainWindow):
     def set_theme(self):
         if self.theme == "dark":
             self.theme_stylesheet = """
-                background-color: #1C1E26;
-                color: #ABB2BF;
-                border: 1px solid #4B5363;
+                background-color: #1c1c1c;
+                color: #d0d0d0;
+                border: 1px solid #585858;
                 border-radius: 4px;
                 padding: 2px 4px; /* Adjust padding */
             """
         elif self.theme == "light":
             self.theme_stylesheet = """
-                background-color: #F4F4F4;
-                color: #2C323C;
-                border: 1px solid #D3D7CF;
+                background-color: #eeeeee;
+                color: #444444;
+                border: 1px solid #bcbcbc;
                 border-radius: 4px;
                 padding: 2px 4px; /* Adjust padding */
             """
