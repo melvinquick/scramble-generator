@@ -17,7 +17,7 @@ The general purpose of this app is to give people an easy way to generate scramb
 | :white_check_mark: | Create Logo                                                  |
 | :white_check_mark: | Create GUI with PyQt6                                        |
 | :white_check_mark: | Generate scrambles for standard twisty puzzles               |
-| :x:                | Distribute as an EXE using PyInstaller and/or Auto-Py-To-Exe |
+| :white_check_mark: | Distribute as an EXE using PyInstaller and/or Auto-Py-To-Exe |
 | :white_check_mark: | Theme GUI to PaperColor                                      |
 | :white_check_mark: | Add toggle for dark/light mode                               |
 
