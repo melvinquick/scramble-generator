@@ -21,6 +21,6 @@ The general purpose of this app is to give people an easy way to generate scramb
 | :white_check_mark: | Theme GUI to PaperColor                                      |
 | :white_check_mark: | Add toggle for dark/light mode                               |
 
-## Dark/Light Theme Showcase
+## App Showcase
 
 ![app-showcase.gif](gifs/app-showcase.gif)
