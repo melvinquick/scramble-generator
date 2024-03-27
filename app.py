@@ -71,9 +71,6 @@ class MainWindow(QMainWindow):
         gui.setLayout(page)
 
         self.setCentralWidget(gui)
-        self.setStyleSheet(
-            "background-color: #282a3c;"
-        )
 
         self.toggle_theme() # This is done to make issue of text shifting in num_moves after first theme_toggle not noticeable
 
