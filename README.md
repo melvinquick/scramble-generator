@@ -23,4 +23,4 @@ The general purpose of this app is to give people an easy way to generate scramb
 
 ## Dark/Light Theme Showcase
 
-![dark-and-light-themes.png](images/dark-and-light-themes.png)
+![app-showcase.gif](gifs/app-showcase.gif)
