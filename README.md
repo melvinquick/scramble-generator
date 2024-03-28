@@ -25,6 +25,10 @@ The general purpose of this app is to give people an easy way to generate scramb
 
 ![app-showcase.gif](gifs/app-showcase.gif)
 
+## Direct Download Latest Version
+
+You can always use [this](https://github.com/cquick00/scramble-generator/releases/latest/download/scramble-generator.exe) link to direct download the version tagged as "latest" in the releases. Feel free to save it and use it as you wish!
+
 ## Windows Says This Is A Virus!
 
 This app is not a virus. Please read more [here](informational/virus-explanation.md).
