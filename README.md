@@ -24,3 +24,7 @@ The general purpose of this app is to give people an easy way to generate scramb
 ## App Showcase
 
 ![app-showcase.gif](gifs/app-showcase.gif)
+
+## Windows Says This Is A Virus!
+
+This app is not a virus. Please read more [here](informational/virus-explanation.md).
