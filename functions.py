@@ -1,13 +1,30 @@
 # --- Libraries --- #
 
-import random
-
+import random, time
 
 # --- Functions --- #
 
 # Function for generating random moves for standard 3x3 cube puzzles
 # Possible moves are: Right and Right Inverted (R and R'), Left and Left Inverted (L and L'), Up and Up Inverted (U and U'), Down and Down Inverted (D and D'), Front and Front Inverted (F and F'), Back and Back Inverted (B and B')
 
+class Stopwatch():
+    def __init__(self):
+        super().__init__()
+
+    def start_timer():
+        pass
+
+    def stop_timer():
+        pass
+
+    def reset_timer():
+        pass
+
+    def add_to_time_history():
+        pass
+
+    def average_time_of_history():
+        pass
 
 def moves(num_moves=25, puzzle="3x3"):
     opposite_moves = {
