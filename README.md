@@ -8,7 +8,11 @@
 
 ## Purpose
 
-The general purpose of this app is to give people an easy way to generate scrambles for 2x2 and 3x3 Rubik's Puzzles.
+The general purpose of this app is to give people an easy way to generate scrambles for standard twisty puzzles.
+
+## App Showcase
+
+![app-showcase.gif](gifs/app-showcase.gif)
 
 ## Project Goals
 
@@ -20,10 +24,6 @@ The general purpose of this app is to give people an easy way to generate scramb
 | :white_check_mark: | Distribute as an EXE using PyInstaller and/or Auto-Py-To-Exe |
 | :white_check_mark: | Theme GUI to PaperColor                                      |
 | :white_check_mark: | Add toggle for dark/light mode                               |
-
-## App Showcase
-
-![app-showcase.gif](gifs/app-showcase.gif)
 
 ## Direct Download Latest Version
 
