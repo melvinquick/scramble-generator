@@ -24,6 +24,9 @@ The general purpose of this app is to give people an easy way to generate scramb
 | :white_check_mark: | Distribute as an EXE using PyInstaller and/or Auto-Py-To-Exe |
 | :white_check_mark: | Theme GUI to PaperColor                                      |
 | :white_check_mark: | Add toggle for dark/light mode                               |
+| :x:                | Add timer/stopwatch                                          |
+| :x:                | Make timer keep track of the previous times you've had       |
+| :x:                | Add area to keep average times for this session              |
 
 ## Direct Download Latest Version
 
