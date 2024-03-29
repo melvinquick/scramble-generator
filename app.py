@@ -1,5 +1,4 @@
-import sys, os
-import functions
+import sys, os, functions
 
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QIcon
