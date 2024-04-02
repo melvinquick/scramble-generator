@@ -10,6 +10,8 @@ import random, time, os
 
 class Timer:
     def __init__(self):
+        super().__init__()
+        
         self.start_time = None
         self.elapsed_time = 0
         self.is_running = False
