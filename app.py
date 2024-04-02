@@ -29,11 +29,11 @@ class MainWindow(QMainWindow):
         self.theme = "light"
         self.set_theme()
 
-        page = QVBoxLayout()
-        inputs = QHBoxLayout()
+        self.page = QVBoxLayout()
+        self.inputs = QHBoxLayout()
 
-        button = QPushButton("Generate Scramble")
-        self.apply_theme(button)
+        self.button = QPushButton("Generate Scramble")
+        self.apply_theme(self.button)
 
         self.puzzle_type = QComboBox()
         self.puzzle_type.addItems(["2x2", "3x3"])
@@ -55,22 +55,22 @@ class MainWindow(QMainWindow):
         )
         self.apply_theme(self.scramble)
 
-        inputs.addWidget(button)
-        inputs.addWidget(self.puzzle_type)
-        inputs.addWidget(self.num_moves)
-        inputs.addWidget(self.theme_toggle)
+        self.inputs.addWidget(self.button)
+        self.inputs.addWidget(self.puzzle_type)
+        self.inputs.addWidget(self.num_moves)
+        self.inputs.addWidget(self.theme_toggle)
 
-        page.addLayout(inputs)
-        page.addWidget(self.scramble)
+        self.page.addLayout(self.inputs)
+        self.page.addWidget(self.scramble)
 
-        button.pressed.connect(self.get_moves)
+        self.button.pressed.connect(self.get_moves)
         self.theme_toggle.pressed.connect(self.toggle_theme)
         self.puzzle_type.currentTextChanged.connect(self.set_default_num_moves)
 
-        gui = QWidget()
-        gui.setLayout(page)
+        self.gui = QWidget()
+        self.gui.setLayout(self.page)
 
-        self.setCentralWidget(gui)
+        self.setCentralWidget(self.gui)
 
         self.toggle_theme()  # This is done to make issue of text shifting in num_moves after first theme_toggle not noticeable
 
