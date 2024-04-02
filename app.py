@@ -31,9 +31,10 @@ class MainWindow(QMainWindow):
 
         self.page = QVBoxLayout()
         self.inputs = QHBoxLayout()
+        self.timer_section = QVBoxLayout()
 
-        self.button = QPushButton("Generate Scramble")
-        self.apply_theme(self.button)
+        self.scramble_button = QPushButton("Generate Scramble")
+        self.apply_theme(self.scramble_button)
 
         self.puzzle_type = QComboBox()
         self.puzzle_type.addItems(["2x2", "3x3"])
@@ -55,15 +56,21 @@ class MainWindow(QMainWindow):
         )
         self.apply_theme(self.scramble)
 
-        self.inputs.addWidget(self.button)
+        self.start_timer_button = QPushButton("Start Timer")
+        self.apply_theme(self.start_timer_button)
+
+        self.inputs.addWidget(self.scramble_button)
         self.inputs.addWidget(self.puzzle_type)
         self.inputs.addWidget(self.num_moves)
         self.inputs.addWidget(self.theme_toggle)
 
+        self.timer_section.addWidget(self.start_timer_button)
+
         self.page.addLayout(self.inputs)
         self.page.addWidget(self.scramble)
+        self.page.addLayout(self.timer_section)
 
-        self.button.pressed.connect(self.get_moves)
+        self.scramble_button.pressed.connect(self.get_moves)
         self.theme_toggle.pressed.connect(self.toggle_theme)
         self.puzzle_type.currentTextChanged.connect(self.set_default_num_moves)
 
