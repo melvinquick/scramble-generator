@@ -1,6 +1,6 @@
 import sys, os, functions
 
-from PyQt6.QtCore import Qt
+from PyQt6.QtCore import Qt, QTimer, QDateTime, QTime
 from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import (
     QApplication,
@@ -31,6 +31,10 @@ class MainWindow(QMainWindow):
         self.theme = "light"
         self.set_theme()
 
+        # Define normal variables
+        self.is_running = False
+        self.elapsed_time = QTime(0, 0)
+
         # Create end user widgets and apply settings to them
         self.scramble_button = QPushButton("Generate Scramble")
 
@@ -50,7 +54,15 @@ class MainWindow(QMainWindow):
             Qt.AlignmentFlag.AlignVCenter | Qt.AlignmentFlag.AlignHCenter
         )
 
-        self.start_timer_button = QPushButton("Start Timer")
+        self.timer_button = QPushButton("Start Timer")
+
+        self.timer_output = QLabel("00:00.0")
+        self.timer_output.setAlignment(
+            Qt.AlignmentFlag.AlignVCenter | Qt.AlignmentFlag.AlignHCenter
+        )
+
+        self.timer = QTimer()
+        self.timer.interval = 10  # Milliseconds
 
         # Define button connections and/or actions
         self.scramble_button.pressed.connect(self.get_moves)
@@ -59,18 +71,23 @@ class MainWindow(QMainWindow):
 
         self.theme_toggle.pressed.connect(self.toggle_theme)
 
+        self.timer_button.pressed.connect(self.toggle_timer)
+
+        self.timer.timeout.connect(self.update_time)
+
         # Apply theme to end user widgets
         self.apply_theme(self.scramble_button)
         self.apply_theme(self.puzzle_type)
         self.apply_theme(self.num_moves)
         self.apply_theme(self.theme_toggle)
         self.apply_theme(self.scramble)
-        self.apply_theme(self.start_timer_button)
+        self.apply_theme(self.timer_button)
+        self.apply_theme(self.timer_output)
 
         # Create layouts
         self.page = QVBoxLayout()
         self.inputs = QHBoxLayout()
-        self.timer_section = QVBoxLayout()
+        self.timer_section = QHBoxLayout()
 
         # Add widgets to layouts
         self.inputs.addWidget(self.scramble_button)
@@ -78,7 +95,8 @@ class MainWindow(QMainWindow):
         self.inputs.addWidget(self.num_moves)
         self.inputs.addWidget(self.theme_toggle)
 
-        self.timer_section.addWidget(self.start_timer_button)
+        self.timer_section.addWidget(self.timer_button)
+        self.timer_section.addWidget(self.timer_output)
 
         # Setup overall page layout and do one time toggle of overall window theme
         self.page.addLayout(self.inputs)
@@ -136,6 +154,24 @@ class MainWindow(QMainWindow):
                 self.num_moves.setValue(9)
             case "3x3":
                 self.num_moves.setValue(25)
+
+    def toggle_timer(self):
+        if not self.is_running:
+            self.timer.start(100)  # Update display every 100 milliseconds
+            self.timer_button.setText("Stop Timer")
+            self.is_running = True
+        else:
+            self.timer.stop()
+            self.timer_button.setText("Start Timer")
+            self.is_running = False
+            self.update_time()
+
+    def update_time(self):
+        self.elapsed_time = self.elapsed_time.addMSecs(100) # Increment time by 100 milliseconds
+        self.timer_output.setText(self.elapsed_time.toString("mm:ss.z"))
+
+        if not self.is_running:
+            self.elapsed_time = QTime(0, 0)
 
 
 def main():
