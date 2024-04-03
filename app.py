@@ -22,43 +22,57 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
+        # Set window default settings
         self.setWindowTitle("Scramble Generator")
         self.setMinimumSize(360, 100)
         self.setWindowIcon(QIcon(icon))
 
+        # Set window default theme
         self.theme = "light"
         self.set_theme()
 
-        self.page = QVBoxLayout()
-        self.inputs = QHBoxLayout()
-        self.timer_section = QVBoxLayout()
-
+        # Create end user widgets and apply settings to them
         self.scramble_button = QPushButton("Generate Scramble")
-        self.apply_theme(self.scramble_button)
 
         self.puzzle_type = QComboBox()
         self.puzzle_type.addItems(["2x2", "3x3"])
         self.puzzle_type.setCurrentIndex(1)
-        self.apply_theme(self.puzzle_type)
 
         self.num_moves = QSpinBox()
         self.num_moves.setRange(9, 130)
         self.num_moves.setValue(25)
         self.num_moves.lineEdit().setReadOnly(True)
-        self.apply_theme(self.num_moves)
 
         self.theme_toggle = QPushButton("Dark Mode")
-        self.apply_theme(self.theme_toggle)
 
         self.scramble = QLabel()
         self.scramble.setAlignment(
             Qt.AlignmentFlag.AlignVCenter | Qt.AlignmentFlag.AlignHCenter
         )
-        self.apply_theme(self.scramble)
 
         self.start_timer_button = QPushButton("Start Timer")
+
+        # Define button connections and/or actions
+        self.scramble_button.pressed.connect(self.get_moves)
+
+        self.puzzle_type.currentTextChanged.connect(self.set_default_num_moves)
+
+        self.theme_toggle.pressed.connect(self.toggle_theme)
+
+        # Apply theme to end user widgets
+        self.apply_theme(self.scramble_button)
+        self.apply_theme(self.puzzle_type)
+        self.apply_theme(self.num_moves)
+        self.apply_theme(self.theme_toggle)
+        self.apply_theme(self.scramble)
         self.apply_theme(self.start_timer_button)
 
+        # Create layouts
+        self.page = QVBoxLayout()
+        self.inputs = QHBoxLayout()
+        self.timer_section = QVBoxLayout()
+
+        # Add widgets to layouts
         self.inputs.addWidget(self.scramble_button)
         self.inputs.addWidget(self.puzzle_type)
         self.inputs.addWidget(self.num_moves)
@@ -66,13 +80,10 @@ class MainWindow(QMainWindow):
 
         self.timer_section.addWidget(self.start_timer_button)
 
+        # Setup overall page layout and do one time toggle of overall window theme
         self.page.addLayout(self.inputs)
         self.page.addWidget(self.scramble)
         self.page.addLayout(self.timer_section)
-
-        self.scramble_button.pressed.connect(self.get_moves)
-        self.theme_toggle.pressed.connect(self.toggle_theme)
-        self.puzzle_type.currentTextChanged.connect(self.set_default_num_moves)
 
         self.gui = QWidget()
         self.gui.setLayout(self.page)
