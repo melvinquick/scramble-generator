@@ -4,7 +4,7 @@
 
 ### Attributions
 
-- Logo: [Dinosoft Labs Rubik Icons - Flaticon](https://www.flaticon.com/free-icons/rubik)
+- Logo: [Rubik icons created by DinosoftLabs - Flaticon](https://www.flaticon.com/free-icons/rubik)
 - Color Scheme: [PaperColor](https://github.com/NLKNguyen/papercolor-theme)
 
 ## Purpose
