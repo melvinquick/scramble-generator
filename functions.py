@@ -1,42 +1,11 @@
 # --- Libraries --- #
 
-import random, time, os
+import random
 
 # --- Functions --- #
 
 # Function for generating random moves for standard 3x3 cube puzzles
 # Possible moves are: Right and Right Inverted (R and R'), Left and Left Inverted (L and L'), Up and Up Inverted (U and U'), Down and Down Inverted (D and D'), Front and Front Inverted (F and F'), Back and Back Inverted (B and B')
-
-
-class Timer:
-    def __init__(self):
-        super().__init__()
-        
-        self.start_time = None
-        self.elapsed_time = 0
-        self.is_running = False
-        self.total_time = 0
-
-    def start_timer(self):
-        if not self.is_running:
-            self.start_time = time.time()
-            self.is_running = True
-
-    def stop_timer(self):
-        if self.is_running:
-            self.elapsed_time = time.time() - self.start_time
-            self.is_running = False
-
-    def reset_timer(self):
-        self.elapsed_time = 0
-        self.is_running = False
-        self.total_time = 0
-
-    def log_timer(self):
-        if self.is_running:
-            self.total_time = time.time() - self.start_time
-
-        return round(self.total_time, 2)
 
 
 def moves(num_moves=25, puzzle="3x3"):
@@ -138,20 +107,5 @@ def main():
     print(moves(num_moves))
 
 
-def timer_main():
-    timer = Timer()
-    command = input(
-        "Please enter one of the following commands... \nstart\nctrl-c to quit\n\n>"
-    )
-
-    if command == "start":
-        timer.start_timer()
-    else:
-        print("Invalid command. Please try again.")
-
-    while True:
-        print(timer.log_timer())
-
-
 if __name__ == "__main__":
-    timer_main()
+    main()
