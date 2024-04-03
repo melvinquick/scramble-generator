@@ -4,7 +4,8 @@
 
 ### Attributions
 
-- Logo: <a href="https://www.flaticon.com/free-icons/rubik" title="Rubik icons">Rubik icons created by DinosoftLabs - Flaticon</a>
+- Logo: [Dinosoft Labs Rubik Icons - Flaticon](https://www.flaticon.com/free-icons/rubik)
+- Color Scheme: [PaperColor](https://github.com/NLKNguyen/papercolor-theme)
 
 ## Purpose
 
