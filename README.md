@@ -7,6 +7,10 @@
 - Logo: [Rubik icons created by DinosoftLabs - Flaticon](https://www.flaticon.com/free-icons/rubik)
 - Color Scheme: [PaperColor](https://github.com/NLKNguyen/papercolor-theme)
 
+### Donations
+
+<a href="https://www.buymeacoffee.com/KingKairos" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-green.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+
 ## Purpose
 
 The general purpose of this app is to give people an easy way to generate scrambles for standard twisty puzzles.
