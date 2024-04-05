@@ -27,4 +27,5 @@
 - Please feel free to drop a message in the [Official Scramble Generator Discord](https://discord.gg/urfh2EMQNG) or [email](mailto:scramblegenerator@proton.me) us!
 
 App made with :heart:,
+
 The Scramble Generator Team
