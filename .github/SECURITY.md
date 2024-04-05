@@ -9,7 +9,7 @@
 
 ## Reporting a Vulnerability
 
-You can report a known vulnerability by going to the [issues](https://github.com/cquick00/scramble-generator/issues) page and opening an issue detailing the vulnerability as follows:
+You can report a known vulnerability by going to the [issues](https://github.com/melvinquick/scramble-generator/issues) page and opening an issue detailing the vulnerability as follows:
 
 ```
 Vulernability Name:

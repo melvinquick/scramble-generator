@@ -25,7 +25,7 @@ View a table of the status of all project goals by going [here](informational/pr
 
 ## Direct Download Latest Version
 
-You can always use [this](https://github.com/cquick00/scramble-generator/releases/latest/download/scramble-generator.exe) link to direct download the version tagged as "latest" in the releases. Feel free to save it and use it as you wish!
+You can always use [this](https://github.com/melvinquick/scramble-generator/releases/latest/download/scramble-generator.exe) link to direct download the version tagged as "latest" in the releases. Feel free to save it and use it as you wish!
 
 ## Windows Says This Is A Virus!
 
