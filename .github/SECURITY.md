@@ -9,11 +9,6 @@
 
 ## Reporting a Vulnerability
 
-You can report a known vulnerability by going to the [issues](https://github.com/melvinquick/scramble-generator/issues) page and opening an issue detailing the vulnerability as follows:
-
-```
-Vulernability Name:
-Vulnerability Informational Link:
-```
+Here's how you can [report a known vulnerability](https://github.com/melvinquick/scramble-generator/security/advisories/new).
 
 I will do my best to get to update the Scramble Generator package as soon as possible and provide a new release to correct any known vulnerabilities.
