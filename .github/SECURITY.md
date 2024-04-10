@@ -11,4 +11,4 @@
 
 Here's how you can [report a known vulnerability](https://github.com/melvinquick/scramble-generator/security/advisories/new).
 
-I will do my best to the Scramble Generator package as soon as possible and provide a new release to correct any known vulnerabilities.
+I will do my best to update the Scramble Generator package as soon as possible and provide a new release to correct any known vulnerabilities.
