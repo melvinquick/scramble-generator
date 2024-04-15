@@ -1,6 +1,6 @@
 import sys, os, scramble_generator
 
-from PyQt6.QtCore import Qt, QTimer, QDateTime, QTime
+from PyQt6.QtCore import Qt, QTimer, QTime
 from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import (
     QApplication,
