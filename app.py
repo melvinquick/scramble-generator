@@ -147,9 +147,7 @@ class MainWindow(QMainWindow):
 
     def get_moves(self):
         scramble = ScrambleGenerator(self.puzzle_type.currentText())
-        self.scramble.setText(
-            scramble.generate_scramble(self.num_moves.value())
-        )
+        self.scramble.setText(scramble.generate_scramble(self.num_moves.value()))
 
     def set_default_num_moves(self):
         match self.puzzle_type.currentText():
@@ -170,7 +168,9 @@ class MainWindow(QMainWindow):
             self.update_time()
 
     def update_time(self):
-        self.elapsed_time = self.elapsed_time.addMSecs(100) # Increment time by 100 milliseconds
+        self.elapsed_time = self.elapsed_time.addMSecs(
+            100
+        )  # Increment time by 100 milliseconds
         self.timer_output.setText(self.elapsed_time.toString("mm:ss.z"))
 
         if not self.is_running:
