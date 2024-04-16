@@ -79,15 +79,6 @@ class MainWindow(QMainWindow):
 
         self.timer.timeout.connect(self.update_time)
 
-        # Apply theme to end user widgets
-        self.apply_theme(self.scramble_button)
-        self.apply_theme(self.puzzle_type)
-        self.apply_theme(self.num_moves)
-        self.apply_theme(self.theme_picker)
-        self.apply_theme(self.scramble)
-        self.apply_theme(self.timer_button)
-        self.apply_theme(self.timer_output)
-
         # Create layouts
         self.page = QVBoxLayout()
         self.inputs = QHBoxLayout()
