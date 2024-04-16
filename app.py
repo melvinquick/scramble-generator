@@ -30,7 +30,7 @@ class MainWindow(QMainWindow):
         self.setWindowIcon(QIcon(icon))
 
         # Set window default theme
-        self.theme = "light"
+        self.theme = "PaperColor-Light"
         self.set_theme()
 
         # Define normal variables
@@ -49,7 +49,9 @@ class MainWindow(QMainWindow):
         self.num_moves.setValue(25)
         self.num_moves.lineEdit().setReadOnly(True)
 
-        self.theme_toggle = QPushButton("Dark Mode")
+        self.theme_picker = QComboBox()
+        self.theme_picker.addItems(["PaperColor-Light", "PaperColor-Dark"])
+        self.theme_picker.setCurrentIndex(1)
 
         self.scramble = QLabel()
         self.scramble.setAlignment(
@@ -71,7 +73,7 @@ class MainWindow(QMainWindow):
 
         self.puzzle_type.currentTextChanged.connect(self.set_default_num_moves)
 
-        self.theme_toggle.pressed.connect(self.toggle_theme)
+        self.theme_picker.currentIndexChanged.connect(self.toggle_theme)
 
         self.timer_button.pressed.connect(self.toggle_timer)
 
@@ -81,7 +83,7 @@ class MainWindow(QMainWindow):
         self.apply_theme(self.scramble_button)
         self.apply_theme(self.puzzle_type)
         self.apply_theme(self.num_moves)
-        self.apply_theme(self.theme_toggle)
+        self.apply_theme(self.theme_picker)
         self.apply_theme(self.scramble)
         self.apply_theme(self.timer_button)
         self.apply_theme(self.timer_output)
@@ -95,7 +97,7 @@ class MainWindow(QMainWindow):
         self.inputs.addWidget(self.scramble_button)
         self.inputs.addWidget(self.puzzle_type)
         self.inputs.addWidget(self.num_moves)
-        self.inputs.addWidget(self.theme_toggle)
+        self.inputs.addWidget(self.theme_picker)
 
         self.timer_section.addWidget(self.timer_button)
         self.timer_section.addWidget(self.timer_output)
@@ -113,19 +115,20 @@ class MainWindow(QMainWindow):
         self.toggle_theme()  # This is done to make issue of text shifting in num_moves after first theme_toggle not noticeable
 
     def set_theme(self):
-        if self.theme == "dark":
-            self.theme_stylesheet = """
-                background-color: #1c1c1c;
-                color: #d0d0d0;
-                border: 1px solid #585858;
-                border-radius: 4px;
-                padding: 2px 4px; /* Adjust padding */
-            """
-        elif self.theme == "light":
-            self.theme_stylesheet = """
+        match self.theme:
+            case "PaperColor-Light":
+                self.theme_stylesheet = """
                 background-color: #eeeeee;
                 color: #444444;
                 border: 1px solid #bcbcbc;
+                border-radius: 4px;
+                padding: 2px 4px; /* Adjust padding */
+            """
+            case "PaperColor-Dark":
+                self.theme_stylesheet = """
+                background-color: #1c1c1c;
+                color: #d0d0d0;
+                border: 1px solid #585858;
                 border-radius: 4px;
                 padding: 2px 4px; /* Adjust padding */
             """
@@ -134,22 +137,16 @@ class MainWindow(QMainWindow):
         widget.setStyleSheet(self.theme_stylesheet)
 
     def toggle_theme(self):
-        self.theme = "light" if self.theme == "dark" else "dark"
+        self.theme = self.theme_picker.currentText()
         self.set_theme()
         self.apply_theme(self)
         # Apply theme to all child widgets
         for widget in self.findChildren(QWidget):
             self.apply_theme(widget)
-        if self.theme == "dark":
-            self.theme_toggle.setText("Dark Mode")
-        else:
-            self.theme_toggle.setText("Light Mode")
 
     def get_moves(self):
         scramble = ScrambleGenerator(self.puzzle_type.currentText())
-        self.scramble.setText(
-            scramble.generate_scramble(self.num_moves.value())
-        )
+        self.scramble.setText(scramble.generate_scramble(self.num_moves.value()))
 
     def set_default_num_moves(self):
         match self.puzzle_type.currentText():
@@ -170,7 +167,9 @@ class MainWindow(QMainWindow):
             self.update_time()
 
     def update_time(self):
-        self.elapsed_time = self.elapsed_time.addMSecs(100) # Increment time by 100 milliseconds
+        self.elapsed_time = self.elapsed_time.addMSecs(
+            100
+        )  # Increment time by 100 milliseconds
         self.timer_output.setText(self.elapsed_time.toString("mm:ss.z"))
 
         if not self.is_running:
