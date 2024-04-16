@@ -21,7 +21,7 @@ The general purpose of this app is to give people an easy way to generate scramb
 
 ## Project Goals
 
-View a table of the status of all project goals by going [here](informational/project-goals.md)!
+View a table of the status of all project goals by going [here](https://github.com/users/melvinquick/projects/2/views/1)!
 
 ## Direct Download Latest Version
 
