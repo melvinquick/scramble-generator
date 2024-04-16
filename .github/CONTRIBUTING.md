@@ -16,7 +16,7 @@
 
 #### Do you intend to add a new feature or change an existing one?
 
-- The [Project Goals](../informational/project-goals.md) Document is a great place to start! If you would like to assist, please take a look here first!
+- The [Project Goals](https://github.com/users/melvinquick/projects/2/views/1) Document is a great place to start! If you would like to assist, please take a look here first!
 
 - Suggest your change in the [Official Scramble Generator Discord](https://discord.gg/urfh2EMQNG) and gauge interest based on feedback you receive.
 
