@@ -1,4 +1,6 @@
-import sys, os, scramble_generator
+import sys, os
+
+from scramble_generator import ScrambleGenerator
 
 from PyQt6.QtCore import Qt, QTimer, QTime
 from PyQt6.QtGui import QIcon
@@ -144,7 +146,7 @@ class MainWindow(QMainWindow):
             self.theme_toggle.setText("Light Mode")
 
     def get_moves(self):
-        scramble = scramble_generator.ScrambleGenerator(self.puzzle_type.currentText())
+        scramble = ScrambleGenerator(self.puzzle_type.currentText())
         self.scramble.setText(
             scramble.generate_scramble(self.num_moves.value())
         )
