@@ -26,7 +26,7 @@ class MainWindow(QMainWindow):
 
         # Set window default settings
         self.setWindowTitle("Scramble Generator")
-        self.setMinimumSize(360, 100)
+        self.setMinimumSize(400, 100)
         self.setWindowIcon(QIcon(icon))
 
         # Set window default theme
