@@ -50,8 +50,8 @@ class MainWindow(QMainWindow):
         self.num_moves.lineEdit().setReadOnly(True)
 
         self.theme_picker = QComboBox()
-        self.theme_picker.addItems(["PaperColor-Light", "PaperColor-Dark"])
-        self.theme_picker.setCurrentIndex(1)
+        self.theme_picker.addItems(["Dracula", "PaperColor-Light", "PaperColor-Dark"])
+        self.theme_picker.setCurrentIndex(2)
 
         self.scramble = QLabel()
         self.scramble.setAlignment(
@@ -103,6 +103,14 @@ class MainWindow(QMainWindow):
 
     def set_theme(self):
         match self.theme:
+            case "Dracula":
+                self.theme_stylesheet = """
+                background-color: #282a36;
+                color: #f8f8f2;
+                border: 1px solid #44475a;
+                border-radius: 4px;
+                padding: 2px 4px; /* Adjust padding */
+            """
             case "PaperColor-Light":
                 self.theme_stylesheet = """
                 background-color: #eeeeee;
