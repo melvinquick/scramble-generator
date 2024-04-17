@@ -53,13 +53,18 @@ class MainWindow(QMainWindow):
         self.theme_picker.addItems(
             [
                 "Dracula",
+                "Everforest-Light",
+                "Everforest-Dark",
                 "Gruvbox-Light",
                 "Gruvbox-Dark",
+                "Nord-Aurora",
+                "Nord-Frost",
+                "Nord-PolarNight",
                 "PaperColor-Light",
                 "PaperColor-Dark",
             ]
         )
-        self.theme_picker.setCurrentIndex(4)
+        self.theme_picker.setCurrentIndex(9)
 
         self.scramble = QLabel()
         self.scramble.setAlignment(
@@ -119,6 +124,22 @@ class MainWindow(QMainWindow):
                 border-radius: 4px;
                 padding: 2px 4px; /* Adjust padding */
             """
+            case "Everforest-Light":
+                self.theme_stylesheet = """
+                background-color: #f3ead3;
+                color: #5c6a72;
+                border: 1px solid #b9c0ab;
+                border-radius: 4px;
+                padding: 2px 4px; /* Adjust padding */
+            """
+            case "Everforest-Dark":
+                self.theme_stylesheet = """
+                background-color: #333c43;
+                color: #d3c6aa;
+                border: 1px solid #5d6b66;
+                border-radius: 4px;
+                padding: 2px 4px; /* Adjust padding */
+            """
             case "Gruvbox-Light":
                 self.theme_stylesheet = """
                 background-color: #fbf1c7;
@@ -132,6 +153,30 @@ class MainWindow(QMainWindow):
                 background-color: #282828;
                 color: #fbf1c7;
                 border: 1px solid #928374;
+                border-radius: 4px;
+                padding: 2px 4px; /* Adjust padding */
+            """
+            case "Nord-Aurora":
+                self.theme_stylesheet = """
+                background-color: #bf616a;
+                color: #ebcb8b;
+                border: 1px solid #d08770;
+                border-radius: 4px;
+                padding: 2px 4px; /* Adjust padding */
+            """
+            case "Nord-Frost":
+                self.theme_stylesheet = """
+                background-color: #5e81ac;
+                color: #8fbcbb;
+                border: 1px solid #81a1c1;
+                border-radius: 4px;
+                padding: 2px 4px; /* Adjust padding */
+            """
+            case "Nord-PolarNight":
+                self.theme_stylesheet = """
+                background-color: #2e3440;
+                color: #4c566a;
+                border: 1px solid #3b4252;
                 border-radius: 4px;
                 padding: 2px 4px; /* Adjust padding */
             """
