@@ -13,3 +13,4 @@ Any issues opened on this repo about this will be closed by me with the link to 
 
 - [1.0.0](https://virustotal.com/gui/file/5fd745d211abd9d4a79d1c6d6c8491b50dd1f54009867997092cc9d626a25a30)
 - [1.1.0](https://virustotal.com/gui/file/eb1493adff0a1cb8e05db9376128bed7a07e7d32be9325ec771d05b7b8ec2924)
+- [1.2.4](https://virustotal.com/gui/file/a337e80ba59e6fa20c33973eda59010e7748b1ae7595066b41992478178f2aaa)
