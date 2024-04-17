@@ -29,10 +29,6 @@ class MainWindow(QMainWindow):
         self.setMinimumSize(400, 100)
         self.setWindowIcon(QIcon(icon))
 
-        # Set window default theme
-        self.theme = "PaperColor-Light"
-        self.set_theme()
-
         # Define normal variables
         self.is_running = False
         self.elapsed_time = QTime(0, 0)
@@ -102,7 +98,7 @@ class MainWindow(QMainWindow):
         self.timer_section.addWidget(self.timer_button)
         self.timer_section.addWidget(self.timer_output)
 
-        # Setup overall page layout and do one time toggle of overall window theme
+        # Setup overall page layout and set default window theme
         self.page.addLayout(self.inputs)
         self.page.addWidget(self.scramble)
         self.page.addLayout(self.timer_section)
@@ -112,7 +108,7 @@ class MainWindow(QMainWindow):
 
         self.setCentralWidget(self.gui)
 
-        self.toggle_theme()  # This is done to make issue of text shifting in num_moves after first theme_toggle not noticeable
+        self.toggle_theme()
 
     def set_theme(self):
         match self.theme:
