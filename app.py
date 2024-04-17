@@ -70,13 +70,9 @@ class MainWindow(QMainWindow):
 
         # Define button connections and/or actions
         self.scramble_button.pressed.connect(self.get_moves)
-
         self.puzzle_type.currentTextChanged.connect(self.set_default_num_moves)
-
         self.theme_picker.currentIndexChanged.connect(self.toggle_theme)
-
         self.timer_button.pressed.connect(self.toggle_timer)
-
         self.timer.timeout.connect(self.update_time)
 
         # Create layouts
