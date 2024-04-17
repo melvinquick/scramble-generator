@@ -26,7 +26,7 @@ class MainWindow(QMainWindow):
 
         # Set window default settings
         self.setWindowTitle("Scramble Generator")
-        self.setMinimumSize(400, 100)
+        self.setMinimumSize(400, 230)
         self.setWindowIcon(QIcon(icon))
 
         # Define normal variables
@@ -73,6 +73,7 @@ class MainWindow(QMainWindow):
         self.timer_output.setAlignment(
             Qt.AlignmentFlag.AlignVCenter | Qt.AlignmentFlag.AlignHCenter
         )
+        self.timer_output.setMaximumHeight(22)
 
         self.timer = QTimer()
         self.timer.interval = 10  # Milliseconds
