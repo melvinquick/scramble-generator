@@ -17,7 +17,7 @@ from PyQt6.QtWidgets import (
 from scramble_generator import ScrambleGenerator
 
 basedir = os.path.dirname(__file__)
-icon = os.path.join(basedir, "images/logo-512x512.ico")
+icon = os.path.join(basedir, "images/scramble-generator-cube.ico")
 
 
 class MainWindow(QMainWindow):
