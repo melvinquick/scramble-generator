@@ -1,8 +1,6 @@
 <p align="center"> <img src="/images/scramble-generator-cube-with-text.png" /> </p>
 
-# Scramble Generator
-
-### Donations
+## Donations
 
 <a href="https://www.buymeacoffee.com/KingKairos" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-green.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
 
