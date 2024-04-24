@@ -1,4 +1,4 @@
-import sys, os
+import sys, os, yaml
 
 from PyQt6.QtCore import Qt, QTimer, QTime
 from PyQt6.QtGui import QIcon
@@ -19,6 +19,10 @@ from scramble_generator import ScrambleGenerator
 basedir = os.path.dirname(__file__)
 icon = os.path.join(basedir, "images/scramble-generator-cube.ico")
 
+config_file = icon = os.path.join(basedir, "config.yml")
+with open(config_file, "r") as f:
+    config = yaml.safe_load(f)
+
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -26,41 +30,43 @@ class MainWindow(QMainWindow):
 
         # Set window default settings
         self.setWindowTitle("Scramble Generator")
-        self.setMinimumSize(400, 230)
+        self.default_window_min_width = config["min_window_size"]["width"]
+        self.default_window_min_height = config["min_window_size"]["height"]
+        self.setMinimumSize(self.default_window_min_width, self.default_window_min_height)
         self.setWindowIcon(QIcon(icon))
 
         # Define normal variables
         self.is_running = False
         self.elapsed_time = QTime(0, 0)
+        self.default_theme = config["defaults"]["theme"]
+        self.default_num_moves = config["defaults"]["num_moves"]
+        self.default_puzzle_type = config["defaults"]["puzzle_type"]
+        self.default_min_num_moves = config["num_moves_range"]["min"]
+        self.default_max_num_moves = config["num_moves_range"]["max"]
+        self.default_num_moves_for_two_by_two = config["num_moves_per_puzzle_defaults"]["2x2"]
+        self.default_num_moves_for_three_by_three = config["num_moves_per_puzzle_defaults"]["3x3"]
+        self.puzzle_type_list = []
+        for puzzle in config["puzzle_type_list"]:
+            self.puzzle_type_list.append(puzzle)
+        self.theme_list = []
+        for theme in config["theme_list"]:
+            self.theme_list.append(theme)
 
         # Create end user widgets and apply settings to them
         self.scramble_button = QPushButton("Generate Scramble")
 
         self.puzzle_type = QComboBox()
-        self.puzzle_type.addItems(["2x2", "3x3"])
-        self.puzzle_type.setCurrentIndex(1)
+        self.puzzle_type.addItems(self.puzzle_type_list)
+        self.puzzle_type.setCurrentText(self.default_puzzle_type)
 
         self.num_moves = QSpinBox()
-        self.num_moves.setRange(9, 130)
-        self.num_moves.setValue(25)
+        self.num_moves.setRange(self.default_min_num_moves, self.default_max_num_moves)
+        self.num_moves.setValue(self.default_num_moves)
         self.num_moves.lineEdit().setReadOnly(True)
 
         self.theme_picker = QComboBox()
-        self.theme_picker.addItems(
-            [
-                "Dracula",
-                "Everforest-Light",
-                "Everforest-Dark",
-                "Gruvbox-Light",
-                "Gruvbox-Dark",
-                "Nord-Aurora",
-                "Nord-Frost",
-                "Nord-PolarNight",
-                "PaperColor-Light",
-                "PaperColor-Dark",
-            ]
-        )
-        self.theme_picker.setCurrentIndex(9)
+        self.theme_picker.addItems(self.theme_list)
+        self.theme_picker.setCurrentText(self.default_theme)
 
         self.scramble = QLabel()
         self.scramble.setAlignment(
@@ -212,9 +218,9 @@ class MainWindow(QMainWindow):
     def set_default_num_moves(self):
         match self.puzzle_type.currentText():
             case "2x2":
-                self.num_moves.setValue(9)
+                self.num_moves.setValue(self.default_num_moves_for_two_by_two)
             case "3x3":
-                self.num_moves.setValue(25)
+                self.num_moves.setValue(self.default_num_moves_for_three_by_three)
 
     def toggle_timer(self):
         if not self.is_running:
