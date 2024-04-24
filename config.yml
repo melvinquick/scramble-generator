@@ -1,8 +1,3 @@
-defaults:
-  theme: PaperColor-Light
-  num_moves: 25
-  puzzle_type: 3x3
-
 num_moves_range:
   min: 10
   max: 150
