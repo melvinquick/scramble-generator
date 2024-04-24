@@ -1,0 +1,4 @@
+defaults:
+  num_moves: 25
+  puzzle_type: 3x3
+  theme: PaperColor-Dark
