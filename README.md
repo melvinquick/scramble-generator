@@ -10,7 +10,8 @@ The general purpose of this app is to give people an easy way to generate scramb
 
 ## App Showcase
 
-![app-showcase.gif](gifs/app-showcase.gif)
+![app-showcase-scrambles-and-timer.gif](gifs/app-showcase-scrambles-and-timer.gif)
+![app-showcase-themes.gif](gifs/app-showcase-themes.gif)
 
 ## Useful Information
 
