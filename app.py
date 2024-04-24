@@ -19,11 +19,11 @@ from scramble_generator import ScrambleGenerator
 basedir = os.path.dirname(__file__)
 icon = os.path.join(basedir, "images/scramble-generator-cube.ico")
 
-config_file = os.path.join(basedir, "config.yml")
+config_file = os.path.join(basedir, "congifs/config.yml")
 with open(config_file, "r") as f:
     config = yaml.safe_load(f)
 
-user_defaults_file = os.path.join(basedir, "user_defaults.yml")
+user_defaults_file = os.path.join(basedir, "configs/user_defaults.yml")
 with open(user_defaults_file, "r") as f:
     user_defaults_config = yaml.safe_load(f)
 
