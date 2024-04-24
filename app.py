@@ -19,9 +19,13 @@ from scramble_generator import ScrambleGenerator
 basedir = os.path.dirname(__file__)
 icon = os.path.join(basedir, "images/scramble-generator-cube.ico")
 
-config_file = icon = os.path.join(basedir, "config.yml")
+config_file = os.path.join(basedir, "config.yml")
 with open(config_file, "r") as f:
     config = yaml.safe_load(f)
+
+user_defaults_file = os.path.join(basedir, "user_defaults.yml")
+with open(user_defaults_file, "r") as f:
+    user_defaults_config = yaml.safe_load(f)
 
 
 class MainWindow(QMainWindow):
@@ -32,19 +36,25 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("Scramble Generator")
         self.default_window_min_width = config["min_window_size"]["width"]
         self.default_window_min_height = config["min_window_size"]["height"]
-        self.setMinimumSize(self.default_window_min_width, self.default_window_min_height)
+        self.setMinimumSize(
+            self.default_window_min_width, self.default_window_min_height
+        )
         self.setWindowIcon(QIcon(icon))
 
         # Define normal variables
         self.is_running = False
         self.elapsed_time = QTime(0, 0)
-        self.default_theme = config["defaults"]["theme"]
-        self.default_num_moves = config["defaults"]["num_moves"]
-        self.default_puzzle_type = config["defaults"]["puzzle_type"]
+        self.default_theme = user_defaults_config["defaults"]["theme"]
+        self.default_num_moves = user_defaults_config["defaults"]["num_moves"]
+        self.default_puzzle_type = user_defaults_config["defaults"]["puzzle_type"]
         self.default_min_num_moves = config["num_moves_range"]["min"]
         self.default_max_num_moves = config["num_moves_range"]["max"]
-        self.default_num_moves_for_two_by_two = config["num_moves_per_puzzle_defaults"]["2x2"]
-        self.default_num_moves_for_three_by_three = config["num_moves_per_puzzle_defaults"]["3x3"]
+        self.default_num_moves_for_two_by_two = config["num_moves_per_puzzle_defaults"][
+            "2x2"
+        ]
+        self.default_num_moves_for_three_by_three = config[
+            "num_moves_per_puzzle_defaults"
+        ]["3x3"]
         self.puzzle_type_list = []
         for puzzle in config["puzzle_type_list"]:
             self.puzzle_type_list.append(puzzle)
@@ -73,6 +83,8 @@ class MainWindow(QMainWindow):
             Qt.AlignmentFlag.AlignVCenter | Qt.AlignmentFlag.AlignHCenter
         )
 
+        self.save_config_button = QPushButton("Save Config")
+
         self.timer_button = QPushButton("Start Timer")
 
         self.timer_output = QLabel("00:00.0")
@@ -88,6 +100,7 @@ class MainWindow(QMainWindow):
         self.scramble_button.pressed.connect(self.get_moves)
         self.puzzle_type.currentTextChanged.connect(self.set_default_num_moves)
         self.theme_picker.currentIndexChanged.connect(self.toggle_theme)
+        self.save_config_button.pressed.connect(self.save_defaults)
         self.timer_button.pressed.connect(self.toggle_timer)
         self.timer.timeout.connect(self.update_time)
 
@@ -102,6 +115,7 @@ class MainWindow(QMainWindow):
         self.inputs.addWidget(self.num_moves)
         self.inputs.addWidget(self.theme_picker)
 
+        self.timer_section.addWidget(self.save_config_button)
         self.timer_section.addWidget(self.timer_button)
         self.timer_section.addWidget(self.timer_output)
 
@@ -241,6 +255,18 @@ class MainWindow(QMainWindow):
 
         if not self.is_running:
             self.elapsed_time = QTime(0, 0)
+
+    def save_defaults(self):
+        current_configs = {
+            "defaults": {
+                "theme": self.theme_picker.currentText(),
+                "num_moves": self.num_moves.value(),
+                "puzzle_type": self.puzzle_type.currentText(),
+            }
+        }
+
+        with open(user_defaults_file, "w") as f:
+            yaml.dump(current_configs, f, default_flow_style=False)
 
 
 def main():
