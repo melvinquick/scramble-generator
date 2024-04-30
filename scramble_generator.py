@@ -1,6 +1,6 @@
 # --- Libraries --- #
 
-import random
+import secrets
 
 # --- Functions --- #
 
@@ -33,14 +33,14 @@ class ScrambleGenerator:
 
         while counter < num_moves:
             if counter == 0:
-                scramble_order.append(random.choice(moves))
+                scramble_order.append(secrets.choice(moves))
             else:
                 filtered_moves = [
                     move
                     for move in moves
                     if move != self.opposite_moves[scramble_order[-1]]
                 ]
-                scramble_order.append(random.choice(filtered_moves))
+                scramble_order.append(secrets.choice(filtered_moves))
 
             counter += 1
 
