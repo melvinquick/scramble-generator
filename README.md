@@ -2,9 +2,10 @@
 
 ## Donations
 
-<a href="https://github.com/sponsors/melvinquick" target="_blank"><img src="https://ghbtns.com/github-btn.html?user=melvinquick&type=sponsor&size=large" alt="Sponsor melvinquick on GitHub" width="217" height="30" title="GitHub"></a>
+<img src="https://img.shields.io/badge/Sponsor-%E2%99%A5-red?style=for-the-badge&logo=GitHub&logoSize=auto" alt="Static Badge" width="150" height="30">
 
-<a href="https://www.buymeacoffee.com/KingKairos" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-green.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+
+<a href="https://www.buymeacoffee.com/KingKairos" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-green.png" alt="Buy Me A Coffee" style="height: 30px !important;width: 150px !important;" ></a>
 
 ## Purpose
 
