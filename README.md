@@ -2,10 +2,8 @@
 
 ## Donations
 
-<img src="https://img.shields.io/badge/Sponsor-%E2%99%A5-red?style=for-the-badge&logo=GitHub&logoSize=auto" alt="Static Badge" width="150" height="30">
-
-
-<a href="https://www.buymeacoffee.com/KingKairos" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-green.png" alt="Buy Me A Coffee" style="height: 30px !important;width: 150px !important;" ></a>
+<img src="https://img.shields.io/badge/Sponsor-%E2%99%A5-red?style=for-the-badge&logo=GitHub" alt="Static Badge" width="160" height="35">
+<a href="https://www.buymeacoffee.com/KingKairos" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-green.png" alt="Buy Me A Coffee" style="height: 35px !important;width: 160px !important;" ></a>
 
 ## Purpose
 
