@@ -271,6 +271,7 @@ class MainWindow(QMainWindow):
 
 def main():
     app = QApplication(sys.argv)
+    app.setStyle("Windows")
     window = MainWindow()
     window.show()
     app.exec()
