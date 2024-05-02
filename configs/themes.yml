@@ -1,0 +1,53 @@
+Dracula:
+  background-color: "#282a36"
+  color: "#f8f8f2"
+  border: 1px solid '#44475a'
+
+Everforest-Light:
+  background-color: "#f3ead3"
+  color: "#5c6a72"
+  border: 1px solid '#b9c0ab'
+
+Everforest-Dark:
+  background-color: "#333c43"
+  color: "#d3c6aa"
+  border: 1px solid '#5d6b66'
+
+Gruvbox-Light:
+  background-color: "#fbf1c7"
+  color: "#282828"
+  border: 1px solid '#928374'
+
+Gruvbox-Dark:
+  background-color: "#282828"
+  color: "#fbf1c7"
+  border: 1px solid '#928374'
+
+Nord-Aurora:
+  background-color: "#bf616a"
+  color: "#ebcb8b"
+  border: 1px solid '#d08770'
+
+Nord-Frost:
+  background-color: "#5e81ac"
+  color: "#8fbcbb"
+  border: 1px solid '#81a1c1'
+
+Nord-PolarNight:
+  background-color: "#2e3440"
+  color: "#4c566a"
+  border: 1px solid '#3b4252'
+
+PaperColor-Light:
+  background-color: "#eeeeee"
+  color: "#444444"
+  border: 1px solid '#bcbcbc'
+
+PaperColor-Dark:
+  background-color: "#1c1c1c"
+  color: "#d0d0d0"
+  border: 1px solid '#585858'
+
+general:
+  border-radius: "4px"
+  padding: "2px 4px"
