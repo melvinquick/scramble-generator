@@ -6,18 +6,6 @@ num_moves_per_puzzle_defaults:
   2x2: 10
   3x3: 25
 
-theme_list:
-  - Dracula
-  - Everforest-Light
-  - Everforest-Dark
-  - Gruvbox-Light
-  - Gruvbox-Dark
-  - Nord-Aurora
-  - Nord-Frost
-  - Nord-PolarNight
-  - PaperColor-Light
-  - PaperColor-Dark
-
 puzzle_type_list:
   - 2x2
   - 3x3
