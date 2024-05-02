@@ -27,6 +27,10 @@ user_defaults_file = os.path.join(basedir, "configs/user_defaults.yml")
 with open(user_defaults_file, "r") as f:
     user_defaults_config = yaml.safe_load(f)
 
+themes_file = os.path.join(basedir, "configs/themes.yml")
+with open(themes_file, "r") as f:
+    themes_config = yaml.safe_load(f)
+
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -59,8 +63,9 @@ class MainWindow(QMainWindow):
         for puzzle in config["puzzle_type_list"]:
             self.puzzle_type_list.append(puzzle)
         self.theme_list = []
-        for theme in config["theme_list"]:
+        for theme in list(themes_config)[:-1]:
             self.theme_list.append(theme)
+        print(self.theme_list)
 
         # Create end user widgets and apply settings to them
         self.scramble_button = QPushButton("Generate Scramble")
@@ -132,87 +137,13 @@ class MainWindow(QMainWindow):
         self.toggle_theme()
 
     def set_theme(self):
-        match self.theme:
-            case "Dracula":
-                self.theme_stylesheet = """
-                background-color: #282a36;
-                color: #f8f8f2;
-                border: 1px solid #44475a;
-                border-radius: 4px;
-                padding: 2px 4px; /* Adjust padding */
-            """
-            case "Everforest-Light":
-                self.theme_stylesheet = """
-                background-color: #f3ead3;
-                color: #5c6a72;
-                border: 1px solid #b9c0ab;
-                border-radius: 4px;
-                padding: 2px 4px; /* Adjust padding */
-            """
-            case "Everforest-Dark":
-                self.theme_stylesheet = """
-                background-color: #333c43;
-                color: #d3c6aa;
-                border: 1px solid #5d6b66;
-                border-radius: 4px;
-                padding: 2px 4px; /* Adjust padding */
-            """
-            case "Gruvbox-Light":
-                self.theme_stylesheet = """
-                background-color: #fbf1c7;
-                color: #282828;
-                border: 1px solid #928374;
-                border-radius: 4px;
-                padding: 2px 4px; /* Adjust padding */
-            """
-            case "Gruvbox-Dark":
-                self.theme_stylesheet = """
-                background-color: #282828;
-                color: #fbf1c7;
-                border: 1px solid #928374;
-                border-radius: 4px;
-                padding: 2px 4px; /* Adjust padding */
-            """
-            case "Nord-Aurora":
-                self.theme_stylesheet = """
-                background-color: #bf616a;
-                color: #ebcb8b;
-                border: 1px solid #d08770;
-                border-radius: 4px;
-                padding: 2px 4px; /* Adjust padding */
-            """
-            case "Nord-Frost":
-                self.theme_stylesheet = """
-                background-color: #5e81ac;
-                color: #8fbcbb;
-                border: 1px solid #81a1c1;
-                border-radius: 4px;
-                padding: 2px 4px; /* Adjust padding */
-            """
-            case "Nord-PolarNight":
-                self.theme_stylesheet = """
-                background-color: #2e3440;
-                color: #4c566a;
-                border: 1px solid #3b4252;
-                border-radius: 4px;
-                padding: 2px 4px; /* Adjust padding */
-            """
-            case "PaperColor-Light":
-                self.theme_stylesheet = """
-                background-color: #eeeeee;
-                color: #444444;
-                border: 1px solid #bcbcbc;
-                border-radius: 4px;
-                padding: 2px 4px; /* Adjust padding */
-            """
-            case "PaperColor-Dark":
-                self.theme_stylesheet = """
-                background-color: #1c1c1c;
-                color: #d0d0d0;
-                border: 1px solid #585858;
-                border-radius: 4px;
-                padding: 2px 4px; /* Adjust padding */
-            """
+        self.theme_stylesheet = """
+                background-color: {};
+                color: {};
+                border: {};
+                border-radius: {};
+                padding: {};
+                """.format(themes_config[self.theme]["background-color"], themes_config[self.theme]["color"], themes_config[self.theme]["border"], themes_config["general"]["border-radius"], themes_config["general"]["padding"])
 
     def apply_theme(self, widget):
         widget.setStyleSheet(self.theme_stylesheet)
