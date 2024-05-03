@@ -2,7 +2,7 @@ num_moves_range:
   min: 10
   max: 150
 
-num_moves_per_puzzle_defaults:
+puzzle_default_moves:
   2x2: 10
   3x3: 25
 
