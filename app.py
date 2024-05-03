@@ -67,7 +67,9 @@ class MainWindow(QMainWindow):
         self.theme_picker.addItems(self.theme_list)
         self.theme_picker.setCurrentText(user_defaults_config["defaults"]["theme"])
 
-        self.scramble = QLabel(" ", alignment=Qt.AlignmentFlag.AlignCenter)
+        self.scramble = QLabel(
+            " ", alignment=Qt.AlignmentFlag.AlignCenter, wordWrap=True
+        )
 
         self.save_config_button = QPushButton("Save Config")
 
