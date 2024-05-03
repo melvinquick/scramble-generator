@@ -1,11 +1,4 @@
-# --- Libraries --- #
-
 import secrets
-
-# --- Functions --- #
-
-# Function for generating random moves for standard 3x3 cube puzzles
-# Possible moves are: Right and Right Inverted (R and R'), Left and Left Inverted (L and L'), Up and Up Inverted (U and U'), Down and Down Inverted (D and D'), Front and Front Inverted (F and F'), Back and Back Inverted (B and B')
 
 
 class ScrambleGenerator:
@@ -14,16 +7,28 @@ class ScrambleGenerator:
         self.opposite_moves = {
             "U ": "U' ",
             "U' ": "U ",
+            "U2 ": "U2' ",
+            "U2' ": "U2 ",
             "D ": "D' ",
             "D' ": "D ",
+            "D2 ": "D2' ",
+            "D2' ": "D2 ",
             "L ": "L' ",
             "L' ": "L ",
+            "L2 ": "L2' ",
+            "L2' ": "L2 ",
             "R ": "R' ",
             "R' ": "R ",
+            "R2 ": "R2' ",
+            "R2' ": "R2 ",
             "F ": "F' ",
             "F' ": "F ",
+            "F2 ": "F2' ",
+            "F2' ": "F2 ",
             "B ": "B' ",
             "B' ": "B ",
+            "B2 ": "B2' ",
+            "B2' ": "B2 ",
         }
 
     def generate_scramble(self, num_moves=25):
@@ -65,9 +70,33 @@ class ScrambleGenerator:
                     "B ",
                     "B' ",
                 ]
-
-
-# --- Main --- #
+            case "4x4":
+                return [
+                    "U ",
+                    "U' ",
+                    "U2 ",
+                    "U2' ",
+                    "D ",
+                    "D' ",
+                    "D2 ",
+                    "D2' ",
+                    "L ",
+                    "L' ",
+                    "L2 ",
+                    "L2' ",
+                    "R ",
+                    "R' ",
+                    "R2 ",
+                    "R2' ",
+                    "F ",
+                    "F' ",
+                    "F2 ",
+                    "F2' ",
+                    "B ",
+                    "B' ",
+                    "B2 ",
+                    "B2' ",
+                ]
 
 
 def main():
@@ -81,7 +110,9 @@ def main():
         num_moves = 25
 
     puzzle_type = str(
-        input("Select one of the following list [2x2,3x3] (leave blank for defaults): ")
+        input(
+            "Select one of the following list [2x2,3x3,4x4] (leave blank for defaults): "
+        )
     )
     if puzzle_type == "":
         puzzle_type = "3x3"
