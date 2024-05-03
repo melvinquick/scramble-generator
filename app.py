@@ -122,13 +122,11 @@ class MainWindow(QMainWindow):
 
     def toggle_theme(self):
         self.theme = self.theme_picker.currentText()
-        self.set_theme()
         self.apply_theme(self)
-        # * Apply theme to all child widgets
-        for widget in self.findChildren(QWidget):
+        for widget in self.findChildren(QWidget):  # * Apply theme to all child widgets
             self.apply_theme(widget)
 
-    def set_theme(self):
+    def apply_theme(self, widget):
         self.theme_stylesheet = f"""
             background-color: {themes_config[self.theme]['background-color']};
             color: {themes_config[self.theme]['color']};
@@ -136,8 +134,6 @@ class MainWindow(QMainWindow):
             border-radius: {themes_config['general']['border-radius']};
             padding: {themes_config['general']['padding']};
             """
-
-    def apply_theme(self, widget):
         widget.setStyleSheet(self.theme_stylesheet)
 
     def get_moves(self):
