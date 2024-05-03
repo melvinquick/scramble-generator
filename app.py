@@ -129,19 +129,13 @@ class MainWindow(QMainWindow):
             self.apply_theme(widget)
 
     def set_theme(self):
-        self.theme_stylesheet = """
-                background-color: {};
-                color: {};
-                border: {};
-                border-radius: {};
-                padding: {};
-                """.format(
-            themes_config[self.theme]["background-color"],
-            themes_config[self.theme]["color"],
-            themes_config[self.theme]["border"],
-            themes_config["general"]["border-radius"],
-            themes_config["general"]["padding"],
-        )
+        self.theme_stylesheet = f"""
+            background-color: {themes_config[self.theme]['background-color']};
+            color: {themes_config[self.theme]['color']};
+            border: {themes_config[self.theme]['border']};
+            border-radius: {themes_config['general']['border-radius']};
+            padding: {themes_config['general']['padding']};
+            """
 
     def apply_theme(self, widget):
         widget.setStyleSheet(self.theme_stylesheet)
