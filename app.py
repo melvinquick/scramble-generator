@@ -46,14 +46,8 @@ class MainWindow(QMainWindow):
         # *  Define normal variables
         self.is_running = False
         self.elapsed_time = QTime(0, 0)
-
-        self.puzzle_type_list = []
-        for puzzle in config["puzzle_type_list"]:
-            self.puzzle_type_list.append(puzzle)
-
-        self.theme_list = []
-        for theme in list(themes_config)[:-1]:
-            self.theme_list.append(theme)
+        self.puzzle_type_list = [puzzle for puzzle in config["puzzle_type_list"]]
+        self.theme_list = [theme for theme in list(themes_config)[:-1]]
 
         # * Create end user widgets and apply settings to them
         self.scramble_button = QPushButton("Generate Scramble")
