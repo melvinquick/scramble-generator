@@ -65,7 +65,6 @@ class MainWindow(QMainWindow):
         self.theme_list = []
         for theme in list(themes_config)[:-1]:
             self.theme_list.append(theme)
-        print(self.theme_list)
 
         # Create end user widgets and apply settings to them
         self.scramble_button = QPushButton("Generate Scramble")
@@ -143,7 +142,13 @@ class MainWindow(QMainWindow):
                 border: {};
                 border-radius: {};
                 padding: {};
-                """.format(themes_config[self.theme]["background-color"], themes_config[self.theme]["color"], themes_config[self.theme]["border"], themes_config["general"]["border-radius"], themes_config["general"]["padding"])
+                """.format(
+            themes_config[self.theme]["background-color"],
+            themes_config[self.theme]["color"],
+            themes_config[self.theme]["border"],
+            themes_config["general"]["border-radius"],
+            themes_config["general"]["padding"],
+        )
 
     def apply_theme(self, widget):
         widget.setStyleSheet(self.theme_stylesheet)
