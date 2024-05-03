@@ -67,20 +67,15 @@ class MainWindow(QMainWindow):
         self.theme_picker.addItems(self.theme_list)
         self.theme_picker.setCurrentText(user_defaults_config["defaults"]["theme"])
 
-        self.scramble = QLabel()
-        self.scramble.setAlignment(
-            Qt.AlignmentFlag.AlignVCenter | Qt.AlignmentFlag.AlignHCenter
-        )
+        self.scramble = QLabel(" ", alignment=Qt.AlignmentFlag.AlignCenter)
 
         self.save_config_button = QPushButton("Save Config")
 
         self.timer_button = QPushButton("Start Timer")
 
-        self.timer_output = QLabel("00:00.0")
-        self.timer_output.setAlignment(
-            Qt.AlignmentFlag.AlignVCenter | Qt.AlignmentFlag.AlignHCenter
+        self.timer_output = QLabel(
+            "00:00.0", alignment=Qt.AlignmentFlag.AlignCenter, maximumHeight=22
         )
-        self.timer_output.setMaximumHeight(22)
 
         self.timer = QTimer()
         self.timer.interval = 10  # * Milliseconds
