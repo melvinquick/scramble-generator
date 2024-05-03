@@ -90,23 +90,23 @@ class MainWindow(QMainWindow):
 
         # * Create layouts
         self.page = QVBoxLayout()
-        self.inputs = QHBoxLayout()
-        self.timer_section = QHBoxLayout()
+        self.row_one = QHBoxLayout()
+        self.row_three = QHBoxLayout()
 
         # * Add widgets to layouts
-        self.inputs.addWidget(self.scramble_button)
-        self.inputs.addWidget(self.puzzle_type)
-        self.inputs.addWidget(self.num_moves)
-        self.inputs.addWidget(self.theme_picker)
+        self.row_one.addWidget(self.scramble_button)
+        self.row_one.addWidget(self.puzzle_type)
+        self.row_one.addWidget(self.num_moves)
+        self.row_one.addWidget(self.theme_picker)
 
-        self.timer_section.addWidget(self.save_config_button)
-        self.timer_section.addWidget(self.timer_button)
-        self.timer_section.addWidget(self.timer_output)
+        self.row_three.addWidget(self.save_config_button)
+        self.row_three.addWidget(self.timer_button)
+        self.row_three.addWidget(self.timer_output)
 
         # * Setup overall page layout and set default window theme
-        self.page.addLayout(self.inputs)
+        self.page.addLayout(self.row_one)
         self.page.addWidget(self.scramble)
-        self.page.addLayout(self.timer_section)
+        self.page.addLayout(self.row_three)
 
         self.gui = QWidget()
         self.gui.setLayout(self.page)
