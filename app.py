@@ -16,20 +16,25 @@ from PyQt6.QtWidgets import (
 
 from scramble_generator import ScrambleGenerator
 
+
+def load_config_read(filename):
+    with open(filename, "r") as f:
+        return yaml.safe_load(f)
+
+
+def load_config_write(filename, configs):
+    with open(filename, "w") as f:
+        return yaml.safe_dump(configs, f, default_flow_style=False)
+
+
 basedir = os.path.dirname(__file__)
 icon = os.path.join(basedir, "images/scramble-generator-cube.ico")
 
-config_file = os.path.join(basedir, "configs/config.yml")
-with open(config_file, "r") as f:
-    config = yaml.safe_load(f)
-
-user_defaults_file = os.path.join(basedir, "configs/user_defaults.yml")
-with open(user_defaults_file, "r") as f:
-    user_defaults_config = yaml.safe_load(f)
-
-themes_file = os.path.join(basedir, "configs/themes.yml")
-with open(themes_file, "r") as f:
-    themes_config = yaml.safe_load(f)
+config = load_config_read(os.path.join(basedir, "configs/config.yml"))
+themes_config = load_config_read(os.path.join(basedir, "configs/themes.yml"))
+user_defaults_config = load_config_read(
+    os.path.join(basedir, "configs/user_defaults.yml")
+)
 
 
 class MainWindow(QMainWindow):
@@ -171,8 +176,9 @@ class MainWindow(QMainWindow):
             }
         }
 
-        with open(user_defaults_file, "w") as f:
-            yaml.dump(current_configs, f, default_flow_style=False)
+        load_config_write(
+            os.path.join(basedir, "configs/user_defaults.yml"), current_configs
+        )
 
 
 def main():
