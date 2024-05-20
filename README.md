@@ -1,4 +1,4 @@
-<p align="center"> <img src="/images/scramble-generator-cube-with-text-short.png" /> </p>
+<p align="center"> <img src="/images/scramble-generator-cube-with-text.png" /> </p>
 
 ## Donations
 
