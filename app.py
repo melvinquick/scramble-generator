@@ -65,6 +65,7 @@ class MainWindow(QMainWindow):
         self.num_moves.setRange(
             config["num_moves_range"]["min"], config["num_moves_range"]["max"]
         )
+        self.num_moves.setMaximumWidth(config["num_moves_widget_size"]["width"])
         self.num_moves.setValue(user_defaults_config["defaults"]["num_moves"])
         self.num_moves.lineEdit().setReadOnly(True)
 
