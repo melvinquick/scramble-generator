@@ -7,6 +7,8 @@ class ScrambleGenerator:
         self.opposite_moves = {
             "U ": "U' ",
             "U' ": "U ",
+            "u ": "u' ",
+            "u' ": "u ",
             "U2 ": "U2' ",
             "U2' ": "U2 ",
             "U3 ": "U3' ",
@@ -27,6 +29,8 @@ class ScrambleGenerator:
             "D5' ": "D5 ",
             "L ": "L' ",
             "L' ": "L ",
+            "l ": "l' ",
+            "l' ": "l ",
             "L2 ": "L2' ",
             "L2' ": "L2 ",
             "L3 ": "L3' ",
@@ -37,6 +41,8 @@ class ScrambleGenerator:
             "L5' ": "L5 ",
             "R ": "R' ",
             "R' ": "R ",
+            "r ": "r' ",
+            "r' ": "r ",
             "R2 ": "R2' ",
             "R2' ": "R2 ",
             "R3 ": "R3' ",
@@ -57,6 +63,8 @@ class ScrambleGenerator:
             "F5' ": "F5 ",
             "B ": "B' ",
             "B' ": "B ",
+            "b ": "b' ",
+            "b' ": "b ",
             "B2 ": "B2' ",
             "B2' ": "B2 ",
             "B3 ": "B3' ",
@@ -466,6 +474,36 @@ class ScrambleGenerator:
                     "B5 ",
                     "B5' ",
                 ]
+            case "pyraminx":
+                return [
+                    "U ",
+                    "U' ",
+                    "u ",
+                    "u' ",
+                    "L ",
+                    "L' ",
+                    "l ",
+                    "l' ",
+                    "R ",
+                    "R' ",
+                    "r ",
+                    "r' ",
+                    "B ",
+                    "B' ",
+                    "b ",
+                    "b' ",
+                ]
+            case "skewb":
+                return [
+                    "L ",
+                    "L' ",
+                    "R ",
+                    "R' ",
+                    "F ",
+                    "F' ",
+                    "B ",
+                    "B' ",
+                ]
 
 
 def main():
@@ -481,6 +519,8 @@ def main():
         "9x9",
         "10x10",
         "11x11",
+        "pyraminx",
+        "skewb",
     ]
 
     try:
@@ -494,7 +534,7 @@ def main():
 
     puzzle_type = str(
         input(
-            "Select one of the following list [2x2,3x3,4x4,5x5,6x6,7x7,8x8,9x9,10x10,11x11] (leave blank for defaults): "
+            "Enter the name of one of the puzzles as it appears in this list [2x2,3x3,4x4,5x5,6x6,7x7,8x8,9x9,10x10,11x11,pyraminx,skewb] (leave blank for defaults): "
         )
     )
 
