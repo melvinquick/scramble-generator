@@ -31,5 +31,8 @@ puzzle_type_list:
   - Skewb
 
 min_window_size:
-  width: 400
+  width: 420
   height: 230
+
+num_moves_widget_size:
+  width: 60
