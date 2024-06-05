@@ -13,6 +13,8 @@ puzzle_default_moves:
   9x9: 110
   10x10: 120
   11x11: 130
+  pyraminx: 15
+  skewb: 25
 
 puzzle_type_list:
   - 2x2
@@ -25,6 +27,8 @@ puzzle_type_list:
   - 9x9
   - 10x10
   - 11x11
+  - Pyraminx
+  - Skewb
 
 min_window_size:
   width: 400
