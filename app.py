@@ -140,12 +140,12 @@ class MainWindow(QMainWindow):
         widget.setStyleSheet(self.theme_stylesheet)
 
     def get_moves(self):
-        scramble = ScrambleGenerator(self.puzzle_type.currentText())
+        scramble = ScrambleGenerator(self.puzzle_type.currentText().lower())
         self.scramble.setText(scramble.generate_scramble(self.num_moves.value()))
 
     def set_default_num_moves(self):
         self.num_moves.setValue(
-            config["puzzle_default_moves"][self.puzzle_type.currentText()]
+            config["puzzle_default_moves"][self.puzzle_type.currentText().lower()]
         )
 
     def toggle_timer(self):
