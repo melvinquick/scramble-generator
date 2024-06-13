@@ -1,4 +1,4 @@
-import sys, os, yaml
+import sys
 
 from PyQt6.QtCore import Qt, QTimer, QTime
 from PyQt6.QtGui import QIcon
@@ -15,26 +15,19 @@ from PyQt6.QtWidgets import (
 )
 
 from scramble_generator import ScrambleGenerator
+from file_handler import FileHandler
 
 
-def load_config_read(filename):
-    with open(filename, "r") as f:
-        return yaml.safe_load(f)
+icon = FileHandler("images/scramble-generator-cube.ico")
 
+config_file = FileHandler("configs/config.yml")
+themes_file = FileHandler("configs/themes.yml")
+user_defaults_file = FileHandler("configs/user_defaults.yml")
 
-def load_config_write(filename, configs):
-    with open(filename, "w") as f:
-        return yaml.safe_dump(configs, f, default_flow_style=False)
+config = config_file.load_yaml_file()
+themes = themes_file.load_yaml_file()
+user_defaults = user_defaults_file.load_yaml_file()
 
-
-basedir = os.path.dirname(__file__)
-icon = os.path.join(basedir, "images/scramble-generator-cube.ico")
-
-config = load_config_read(os.path.join(basedir, "configs/config.yml"))
-themes_config = load_config_read(os.path.join(basedir, "configs/themes.yml"))
-user_defaults_config = load_config_read(
-    os.path.join(basedir, "configs/user_defaults.yml")
-)
 
 
 class MainWindow(QMainWindow):
@@ -46,32 +39,32 @@ class MainWindow(QMainWindow):
         self.setMinimumSize(
             config["min_window_size"]["width"], config["min_window_size"]["height"]
         )
-        self.setWindowIcon(QIcon(icon))
+        self.setWindowIcon(QIcon(icon.get_file_path()))
 
         # *  Define normal variables
         self.is_running = False
         self.elapsed_time = QTime(0, 0)
         self.puzzle_type_list = [puzzle for puzzle in config["puzzle_type_list"]]
-        self.theme_list = [theme for theme in list(themes_config)[:-1]]
+        self.theme_list = [theme for theme in list(themes)[:-1]]
 
         # * Create end user widgets and apply settings to them
         self.scramble_button = QPushButton("Generate Scramble")
 
         self.puzzle_type = QComboBox()
         self.puzzle_type.addItems(self.puzzle_type_list)
-        self.puzzle_type.setCurrentText(user_defaults_config["defaults"]["puzzle_type"])
+        self.puzzle_type.setCurrentText(user_defaults["defaults"]["puzzle_type"])
 
         self.num_moves = QSpinBox()
         self.num_moves.setRange(
             config["num_moves_range"]["min"], config["num_moves_range"]["max"]
         )
         self.num_moves.setMaximumWidth(config["num_moves_widget_size"]["width"])
-        self.num_moves.setValue(user_defaults_config["defaults"]["num_moves"])
+        self.num_moves.setValue(user_defaults["defaults"]["num_moves"])
         self.num_moves.lineEdit().setReadOnly(True)
 
         self.theme_picker = QComboBox()
         self.theme_picker.addItems(self.theme_list)
-        self.theme_picker.setCurrentText(user_defaults_config["defaults"]["theme"])
+        self.theme_picker.setCurrentText(user_defaults["defaults"]["theme"])
 
         self.scramble = QLabel(
             " ", alignment=Qt.AlignmentFlag.AlignCenter, wordWrap=True
@@ -131,11 +124,11 @@ class MainWindow(QMainWindow):
 
     def apply_theme(self, widget):
         self.theme_stylesheet = f"""
-            background-color: {themes_config[self.theme]['background-color']};
-            color: {themes_config[self.theme]['color']};
-            border: {themes_config[self.theme]['border']};
-            border-radius: {themes_config['general']['border-radius']};
-            padding: {themes_config['general']['padding']};
+            background-color: {themes[self.theme]['background-color']};
+            color: {themes[self.theme]['color']};
+            border: {themes[self.theme]['border']};
+            border-radius: {themes['general']['border-radius']};
+            padding: {themes['general']['padding']};
             """
         widget.setStyleSheet(self.theme_stylesheet)
 
@@ -177,9 +170,7 @@ class MainWindow(QMainWindow):
             }
         }
 
-        load_config_write(
-            os.path.join(basedir, "configs/user_defaults.yml"), current_configs
-        )
+        user_defaults_file.save_yaml_file(current_configs)
 
 
 def main():
