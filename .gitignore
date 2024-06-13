@@ -2,5 +2,3 @@ __pycache__/
 env312/
 ignore/
 app-dev.py
-requirements-kivy.txt
-env312-kivy/
